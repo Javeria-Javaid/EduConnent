@@ -22,11 +22,11 @@ Frontend: React.js, Tailwind CSS, JavaScript
 
 Backend: Node.js, Express.js
 
-Database: MongoDB
+Database: Firebase
 
-Authentication: JWT + Role-based Access Control
+Authentication: Firebase Oauth
 
-Deployment: Vercel / Render / MongoDB Atlas
+Deployment: Firebase deployment
 
 🏗️ Structure
 
