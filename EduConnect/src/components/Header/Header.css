@@ -15,15 +15,42 @@
     box-shadow: 0 2px 20px rgba(0,0,0,0.1);
 }
 
-.header .container {
+.header-container {
     display: flex;
     justify-content: space-between;
     align-items: center;
-    padding: 1rem 20px;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 1rem 2rem;
+    gap: 2rem;
 }
 
-/* Logo Styles */
-.logo h2 {
+/* Logo Section */
+.logo-section {
+    display: flex;
+    align-items: center;
+    flex-shrink: 0;
+}
+
+.logo-content {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.logo-icon img {
+    width: 70px;
+    height: 40px;
+    object-fit: contain;
+}
+
+.logo-text {
     color: #2563eb;
     font-size: 1.8rem;
     font-weight: 700;
@@ -32,20 +59,19 @@
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
+    white-space: nowrap;
+    line-height: 1;
 }
 
-.logo:hover h2 {
-    transform: scale(1.05);
-}
-
-/* Navigation Styles */
-.nav {
+/* Navigation Section */
+.nav-section {
     display: flex;
     align-items: center;
-    gap: 2.5rem;
+    gap: 2rem;
+    flex-wrap: nowrap;
 }
 
-.nav a {
+.nav-section a {
     text-decoration: none;
     color: #4b5563;
     font-weight: 500;
@@ -53,13 +79,14 @@
     position: relative;
     padding: 0.5rem 0;
     transition: all 0.3s ease;
+    white-space: nowrap;
 }
 
-.nav a:hover {
+.nav-section a:hover {
     color: #2563eb;
 }
 
-.nav a::after {
+.nav-section a::after {
     content: '';
     position: absolute;
     bottom: 0;
@@ -70,7 +97,7 @@
     transition: width 0.3s ease;
 }
 
-.nav a:hover::after {
+.nav-section a:hover::after {
     width: 100%;
 }
 
@@ -86,6 +113,8 @@
     font-size: 0.9rem;
     transition: all 0.3s ease;
     box-shadow: 0 4px 15px rgba(37, 99, 235, 0.3);
+    white-space: nowrap;
+    margin-left: 1rem;
 }
 
 .cta-button:hover {
@@ -94,11 +123,7 @@
     background: linear-gradient(135deg, #1d4ed8, #1e40af);
 }
 
-.cta-button:active {
-    transform: translateY(0);
-}
-
-/* Mobile Menu Button (for responsive design) */
+/* Mobile Menu Button */
 .mobile-menu-btn {
     display: none;
     background: none;
@@ -107,15 +132,34 @@
     cursor: pointer;
     color: #4b5563;
     padding: 0.5rem;
+    transition: color 0.3s ease;
+}
+
+.mobile-menu-btn:hover {
+    color: #2563eb;
 }
 
 /* Responsive Design */
-@media (max-width: 768px) {
-    .header .container {
-        padding: 0.8rem 20px;
+@media (max-width: 1024px) {
+    .header-container {
+        padding: 1rem 1.5rem;
     }
 
-    .nav {
+    .nav-section {
+        gap: 1.5rem;
+    }
+
+    .nav-section a {
+        font-size: 0.9rem;
+    }
+}
+
+@media (max-width: 768px) {
+    .header-container {
+        padding: 0.8rem 1rem;
+    }
+
+    .nav-section {
         display: none;
         position: absolute;
         top: 100%;
@@ -128,17 +172,19 @@
         gap: 0;
     }
 
-    .nav.active {
+    .nav-section.active {
         display: flex;
     }
 
-    .nav a {
+    .nav-section a {
         padding: 1rem 2rem;
         width: 100%;
         border-bottom: 1px solid #f3f4f6;
+        text-align: center;
+        font-size: 1rem;
     }
 
-    .nav a::after {
+    .nav-section a::after {
         display: none;
     }
 
@@ -152,17 +198,27 @@
         display: block;
     }
 
-    .logo h2 {
+    .logo-text {
         font-size: 1.5rem;
+    }
+
+    .logo-icon img {
+        width: 35px;
+        height: 35px;
     }
 }
 
 @media (max-width: 480px) {
-    .header .container {
-        padding: 0.6rem 15px;
+    .header-container {
+        padding: 0.6rem 1rem;
     }
 
-    .logo h2 {
+    .logo-text {
         font-size: 1.3rem;
+    }
+
+    .logo-icon img {
+        width: 30px;
+        height: 30px;
     }
 }
