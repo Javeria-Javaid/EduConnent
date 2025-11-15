@@ -11,8 +11,8 @@ const CardNav = ({
                      ease = 'power3.out',
                      baseColor = '#fff',
                      menuColor,
-                     buttonBgColor,
-                     buttonTextColor,
+                     buttonBgColor = '#1e293b', // Updated default color
+                     buttonTextColor = '#ffffff',
                      platformName = 'EduConnect'
                  }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
@@ -23,7 +23,7 @@ const CardNav = ({
 
     const calculateHeight = () => {
         const navEl = navRef.current;
-        if (!navEl) return 300; // Increased height for 5 cards
+        if (!navEl) return 300;
 
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         if (isMobile) {
@@ -53,14 +53,14 @@ const CardNav = ({
                 return topBar + contentHeight + padding;
             }
         }
-        return 300; // Increased default height for 5 cards
+        return 300;
     };
 
     const createTimeline = () => {
         const navEl = navRef.current;
         if (!navEl) return null;
 
-        gsap.set(navEl, { height: 70, overflow: 'hidden' }); // Match card-nav height
+        gsap.set(navEl, { height: 70, overflow: 'hidden' });
         gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
         const tl = gsap.timeline({ paused: true });
@@ -76,7 +76,7 @@ const CardNav = ({
             opacity: 1,
             duration: 0.4,
             ease,
-            stagger: 0.06 // Reduced stagger for more items
+            stagger: 0.06
         }, '-=0.1');
 
         return tl;
@@ -168,7 +168,6 @@ const CardNav = ({
                 </div>
 
                 <div className="card-nav-content" aria-hidden={!isExpanded}>
-                    {/* REMOVED .slice(0, 3) to show ALL items */}
                     {(items || []).map((item, idx) => (
                         <div
                             key={`${item.label}-${idx}`}

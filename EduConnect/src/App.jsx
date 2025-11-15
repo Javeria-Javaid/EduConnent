@@ -63,7 +63,7 @@ function App() {
                 logoAlt="EduConnect"
                 items={navItems}
                 baseColor="#ffffff"
-                buttonBgColor="#2563eb"
+                buttonBgColor="#66a1be" // Make sure this is set
                 buttonTextColor="#ffffff"
             />
 

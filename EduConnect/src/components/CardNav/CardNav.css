@@ -98,21 +98,23 @@
 }
 
 .card-nav-cta-button {
-    background-color: #111;
+    background-color: #66a1be; /* Updated color */
     color: white;
     border: none;
     border-radius: calc(0.75rem - 0.35rem);
-    padding: 0 1.25rem;
+    padding: 0 1.5rem;
     height: 80%;
     font-weight: 500;
     cursor: pointer;
-    transition: background-color 0.3s ease;
+    transition: all 0.3s ease;
     align-items: center;
     font-size: 0.95rem;
 }
 
 .card-nav-cta-button:hover {
-    background-color: #333;
+    background-color: #374151; /* Darker shade for hover */
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(30, 41, 59, 0.3);
 }
 
 /* Card Content Area - Optimized for 5 items */
