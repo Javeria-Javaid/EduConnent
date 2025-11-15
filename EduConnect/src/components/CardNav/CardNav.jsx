@@ -13,7 +13,7 @@ const CardNav = ({
                      menuColor,
                      buttonBgColor,
                      buttonTextColor,
-                     platformName = 'EduConnect' // Add platform name prop
+                     platformName = 'EduConnect'
                  }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -23,7 +23,7 @@ const CardNav = ({
 
     const calculateHeight = () => {
         const navEl = navRef.current;
-        if (!navEl) return 260;
+        if (!navEl) return 300; // Increased height for 5 cards
 
         const isMobile = window.matchMedia('(max-width: 768px)').matches;
         if (isMobile) {
@@ -41,8 +41,8 @@ const CardNav = ({
 
                 contentEl.offsetHeight;
 
-                const topBar = 60;
-                const padding = 16;
+                const topBar = 70;
+                const padding = 20;
                 const contentHeight = contentEl.scrollHeight;
 
                 contentEl.style.visibility = wasVisible;
@@ -53,14 +53,14 @@ const CardNav = ({
                 return topBar + contentHeight + padding;
             }
         }
-        return 260;
+        return 300; // Increased default height for 5 cards
     };
 
     const createTimeline = () => {
         const navEl = navRef.current;
         if (!navEl) return null;
 
-        gsap.set(navEl, { height: 60, overflow: 'hidden' });
+        gsap.set(navEl, { height: 70, overflow: 'hidden' }); // Match card-nav height
         gsap.set(cardsRef.current, { y: 50, opacity: 0 });
 
         const tl = gsap.timeline({ paused: true });
@@ -71,7 +71,13 @@ const CardNav = ({
             ease
         });
 
-        tl.to(cardsRef.current, { y: 0, opacity: 1, duration: 0.4, ease, stagger: 0.08 }, '-=0.1');
+        tl.to(cardsRef.current, {
+            y: 0,
+            opacity: 1,
+            duration: 0.4,
+            ease,
+            stagger: 0.06 // Reduced stagger for more items
+        }, '-=0.1');
 
         return tl;
     };
@@ -162,17 +168,26 @@ const CardNav = ({
                 </div>
 
                 <div className="card-nav-content" aria-hidden={!isExpanded}>
-                    {(items || []).slice(0, 3).map((item, idx) => (
+                    {/* REMOVED .slice(0, 3) to show ALL items */}
+                    {(items || []).map((item, idx) => (
                         <div
                             key={`${item.label}-${idx}`}
                             className="nav-card"
                             ref={setCardRef(idx)}
-                            style={{ backgroundColor: item.bgColor, color: item.textColor }}
+                            style={{
+                                backgroundColor: item.bgColor,
+                                color: item.textColor
+                            }}
                         >
                             <div className="nav-card-label">{item.label}</div>
                             <div className="nav-card-links">
                                 {item.links?.map((lnk, i) => (
-                                    <a key={`${lnk.label}-${i}`} className="nav-card-link" href={lnk.href} aria-label={lnk.ariaLabel}>
+                                    <a
+                                        key={`${lnk.label}-${i}`}
+                                        className="nav-card-link"
+                                        href={lnk.href}
+                                        aria-label={lnk.ariaLabel}
+                                    >
                                         <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                         {lnk.label}
                                     </a>

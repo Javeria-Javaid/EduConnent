@@ -11,7 +11,7 @@
 
 .card-nav {
     display: block;
-    height: 70px; /* Increased from 60px to 70px */
+    height: 70px;
     padding: 0;
     background-color: white;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -27,7 +27,7 @@
     top: -5px;
     left: 0;
     right: 0;
-    height: 70px; /* Increased from 60px to 70px */
+    height: 70px;
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -43,6 +43,7 @@
     justify-content: center;
     cursor: pointer;
     gap: 6px;
+    color: #1e293b;
 }
 
 .hamburger-menu:hover .hamburger-line {
@@ -80,17 +81,18 @@
 }
 
 .logo {
-    height: 32px; /* Slightly increased logo size */
+    height: 32px;
 }
+
 .platform-name {
     font-size: 1.45rem;
-    font-weight: 300; /* Light weight for luxury feel */
+    font-weight: 300;
     background: linear-gradient(135deg, #4c9ebb, #1e293b);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
     white-space: nowrap;
-    letter-spacing: 2px; /* Even wider tracking */
+    letter-spacing: 2px;
     font-family: 'Libre Baskerville', 'Times New Roman', serif;
     text-transform: uppercase;
 }
@@ -100,8 +102,8 @@
     color: white;
     border: none;
     border-radius: calc(0.75rem - 0.35rem);
-    padding: 0 1.25rem; /* Slightly increased padding */
-    height: 80%; /* Better proportion with increased height */
+    padding: 0 1.25rem;
+    height: 80%;
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
@@ -113,19 +115,23 @@
     background-color: #333;
 }
 
+/* Card Content Area - Updated for 5 items */
 .card-nav-content {
     position: absolute;
     left: 0;
     right: 0;
-    top: 70px; /* Increased from 60px to match new height */
+    top: 70px;
     bottom: 0;
-    padding: 0.5rem;
+    padding: 0.75rem;
     display: flex;
     align-items: flex-end;
-    gap: 12px;
+    gap: 10px;
     visibility: hidden;
     pointer-events: none;
     z-index: 1;
+    justify-content: center;
+    flex-wrap: nowrap;
+    overflow-x: auto;
 }
 
 .card-nav.open .card-nav-content {
@@ -133,46 +139,81 @@
     pointer-events: auto;
 }
 
+/* Nav Cards - Optimized for 5 items */
 .nav-card {
     height: 100%;
     flex: 1 1 0;
-    min-width: 0;
+    min-width: 180px;
+    max-width: 220px;
     border-radius: calc(0.75rem - 0.2rem);
     position: relative;
     display: flex;
     flex-direction: column;
-    padding: 12px 16px;
-    gap: 8px;
+    padding: 10px 12px;
+    gap: 6px;
     user-select: none;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.nav-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
 }
 
 .nav-card-label {
-    font-weight: 400;
-    font-size: 22px;
-    letter-spacing: -0.5px;
+    font-weight: 500;
+    font-size: 20px;
+    letter-spacing: -0.3px;
+    margin-bottom: 4px;
 }
 
 .nav-card-links {
     margin-top: auto;
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
 
 .nav-card-link {
-    font-size: 16px;
+    font-size: 14px;
     cursor: pointer;
     text-decoration: none;
-    transition: opacity 0.3s ease;
+    transition: all 0.3s ease;
     display: inline-flex;
     align-items: center;
-    gap: 6px;
+    gap: 4px;
+    padding: 2px 0;
+    color: inherit;
 }
 
 .nav-card-link:hover {
-    opacity: 0.75;
+    opacity: 0.8;
+    transform: translateX(2px);
 }
 
+.nav-card-link-icon {
+    font-size: 12px;
+    opacity: 0.7;
+}
+
+/* Tablet adjustments */
+@media (max-width: 1024px) {
+    .nav-card {
+        min-width: 160px;
+        max-width: 200px;
+        padding: 8px 10px;
+    }
+
+    .nav-card-label {
+        font-size: 18px;
+    }
+
+    .nav-card-link {
+        font-size: 13px;
+    }
+}
+
+/* Mobile adjustments */
 @media (max-width: 768px) {
     .card-nav-container {
         width: 95%;
@@ -182,11 +223,11 @@
     .card-nav-top {
         padding: 0.5rem 1rem;
         justify-content: space-between;
-        height: 65px; /* Slightly less on mobile */
+        height: 65px;
     }
 
     .card-nav {
-        height: 65px; /* Slightly less on mobile */
+        height: 65px;
     }
 
     .hamburger-menu {
@@ -201,11 +242,12 @@
     }
 
     .platform-name {
-        font-size: 1.2rem; /* Adjusted for mobile */
+        font-size: 1.2rem;
+        letter-spacing: 1.5px;
     }
 
     .logo {
-        height: 28px; /* Adjusted for mobile */
+        height: 28px;
     }
 
     .card-nav-cta-button {
@@ -213,34 +255,49 @@
     }
 
     .card-nav-content {
-        top: 65px; /* Adjusted for mobile */
+        top: 65px;
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
-        padding: 0.5rem;
+        padding: 0.75rem;
         bottom: 0;
         justify-content: flex-start;
+        overflow-y: auto;
     }
 
     .nav-card {
         height: auto;
-        min-height: 60px;
+        min-height: 80px;
         flex: 1 1 auto;
-        max-height: none;
+        max-width: none;
+        min-width: auto;
+        padding: 12px 16px;
     }
 
     .nav-card-label {
         font-size: 18px;
+        margin-bottom: 6px;
+    }
+
+    .nav-card-links {
+        flex-direction: row;
+        flex-wrap: wrap;
+        gap: 8px;
     }
 
     .nav-card-link {
-        font-size: 15px;
+        font-size: 14px;
+        padding: 4px 8px;
+        background: rgba(255, 255, 255, 0.2);
+        border-radius: 4px;
     }
 }
 
+/* Small mobile adjustments */
 @media (max-width: 480px) {
     .platform-name {
         font-size: 1.1rem;
+        letter-spacing: 1px;
     }
 
     .logo {
@@ -248,14 +305,85 @@
     }
 
     .card-nav-top {
-        height: 60px; /* Even smaller on very small screens */
+        height: 60px;
+        padding: 0.5rem 0.8rem;
     }
 
     .card-nav {
-        height: 60px; /* Even smaller on very small screens */
+        height: 60px;
     }
 
     .card-nav-content {
-        top: 60px; /* Adjusted for very small screens */
+        top: 60px;
+        padding: 0.5rem;
+        gap: 6px;
     }
+
+    .nav-card {
+        min-height: 70px;
+        padding: 10px 12px;
+    }
+
+    .nav-card-label {
+        font-size: 16px;
+    }
+
+    .nav-card-links {
+        gap: 6px;
+    }
+
+    .nav-card-link {
+        font-size: 12px;
+        padding: 3px 6px;
+    }
+}
+
+/* Extra small screens */
+@media (max-width: 360px) {
+    .platform-name {
+        font-size: 1rem;
+    }
+
+    .logo {
+        height: 24px;
+    }
+
+    .logo-container {
+        gap: 0.3rem;
+    }
+
+    .nav-card-label {
+        font-size: 15px;
+    }
+
+    .nav-card-link {
+        font-size: 11px;
+    }
+}
+
+/* Smooth animations */
+.card-nav,
+.card-nav-content,
+.nav-card,
+.nav-card-link {
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Scrollbar styling for card content */
+.card-nav-content::-webkit-scrollbar {
+    height: 4px;
+}
+
+.card-nav-content::-webkit-scrollbar-track {
+    background: rgba(0, 0, 0, 0.1);
+    border-radius: 2px;
+}
+
+.card-nav-content::-webkit-scrollbar-thumb {
+    background: rgba(0, 0, 0, 0.3);
+    border-radius: 2px;
+}
+
+.card-nav-content::-webkit-scrollbar-thumb:hover {
+    background: rgba(0, 0, 0, 0.5);
 }
