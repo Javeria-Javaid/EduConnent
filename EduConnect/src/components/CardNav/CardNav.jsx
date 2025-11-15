@@ -12,7 +12,8 @@ const CardNav = ({
                      baseColor = '#fff',
                      menuColor,
                      buttonBgColor,
-                     buttonTextColor
+                     buttonTextColor,
+                     platformName = 'EduConnect' // Add platform name prop
                  }) => {
     const [isHamburgerOpen, setIsHamburgerOpen] = useState(false);
     const [isExpanded, setIsExpanded] = useState(false);
@@ -148,6 +149,7 @@ const CardNav = ({
 
                     <div className="logo-container">
                         <img src={logo} alt={logoAlt} className="logo" />
+                        <span className="platform-name">{platformName}</span>
                     </div>
 
                     <button

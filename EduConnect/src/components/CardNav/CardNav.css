@@ -3,15 +3,15 @@
     top: 2em;
     left: 50%;
     transform: translateX(-50%);
-    width: 95%; /* Increased from 90% to 95% */
-    max-width: 1200px; /* Increased max-width to match content */
+    width: 95%;
+    max-width: 1200px;
     z-index: 99;
     box-sizing: border-box;
 }
 
 .card-nav {
     display: block;
-    height: 60px;
+    height: 70px; /* Increased from 60px to 70px */
     padding: 0;
     background-color: white;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
@@ -22,13 +22,12 @@
     will-change: height;
 }
 
-/* Rest of your existing CardNav CSS remains the same */
 .card-nav-top {
     position: absolute;
-    top: 0;
+    top: -5px;
     left: 0;
     right: 0;
-    height: 60px;
+    height: 70px; /* Increased from 60px to 70px */
     display: flex;
     align-items: center;
     justify-content: space-between;
@@ -69,6 +68,7 @@
     transform: translateY(-4px) rotate(-45deg);
 }
 
+/* Logo Container with Platform Name */
 .logo-container {
     display: flex;
     align-items: center;
@@ -76,10 +76,23 @@
     left: 50%;
     top: 50%;
     transform: translate(-50%, -50%);
+    gap: 0.75rem;
 }
 
 .logo {
-    height: 28px;
+    height: 32px; /* Slightly increased logo size */
+}
+.platform-name {
+    font-size: 1.45rem;
+    font-weight: 300; /* Light weight for luxury feel */
+    background: linear-gradient(135deg, #4c9ebb, #1e293b);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    white-space: nowrap;
+    letter-spacing: 2px; /* Even wider tracking */
+    font-family: 'Libre Baskerville', 'Times New Roman', serif;
+    text-transform: uppercase;
 }
 
 .card-nav-cta-button {
@@ -87,12 +100,13 @@
     color: white;
     border: none;
     border-radius: calc(0.75rem - 0.35rem);
-    padding: 0 1rem;
-    height: 100%;
+    padding: 0 1.25rem; /* Slightly increased padding */
+    height: 80%; /* Better proportion with increased height */
     font-weight: 500;
     cursor: pointer;
     transition: background-color 0.3s ease;
     align-items: center;
+    font-size: 0.95rem;
 }
 
 .card-nav-cta-button:hover {
@@ -103,7 +117,7 @@
     position: absolute;
     left: 0;
     right: 0;
-    top: 60px;
+    top: 70px; /* Increased from 60px to match new height */
     bottom: 0;
     padding: 0.5rem;
     display: flex;
@@ -168,6 +182,11 @@
     .card-nav-top {
         padding: 0.5rem 1rem;
         justify-content: space-between;
+        height: 65px; /* Slightly less on mobile */
+    }
+
+    .card-nav {
+        height: 65px; /* Slightly less on mobile */
     }
 
     .hamburger-menu {
@@ -178,6 +197,15 @@
         position: static;
         transform: none;
         order: 1;
+        gap: 0.5rem;
+    }
+
+    .platform-name {
+        font-size: 1.2rem; /* Adjusted for mobile */
+    }
+
+    .logo {
+        height: 28px; /* Adjusted for mobile */
     }
 
     .card-nav-cta-button {
@@ -185,6 +213,7 @@
     }
 
     .card-nav-content {
+        top: 65px; /* Adjusted for mobile */
         flex-direction: column;
         align-items: stretch;
         gap: 8px;
@@ -206,5 +235,27 @@
 
     .nav-card-link {
         font-size: 15px;
+    }
+}
+
+@media (max-width: 480px) {
+    .platform-name {
+        font-size: 1.1rem;
+    }
+
+    .logo {
+        height: 26px;
+    }
+
+    .card-nav-top {
+        height: 60px; /* Even smaller on very small screens */
+    }
+
+    .card-nav {
+        height: 60px; /* Even smaller on very small screens */
+    }
+
+    .card-nav-content {
+        top: 60px; /* Adjusted for very small screens */
     }
 }
