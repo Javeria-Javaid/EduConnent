@@ -1,10 +1,15 @@
 import React from 'react';
-import TextType from './TextType';
+import DecryptedText from '../DecryptedText/DecryptedText';
 import './Hero.css';
 
 const Hero = ({
-                  title = "Transform Your Learning Journey with EduConnect",
-                  subtitle = "Access world-class education, expert tutors, and interactive resources all in one platform designed for modern learners.",
+                  title,
+                  subtitle,
+                  background = "gradient",
+                  backgroundProps = {
+                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
+                      color: "#1e293b"
+                  },
                   primaryButton = {
                       text: "Start Learning Free",
                       onClick: () => console.log("Primary button clicked")
@@ -13,15 +18,11 @@ const Hero = ({
                       text: "Explore Courses",
                       onClick: () => console.log("Secondary button clicked")
                   },
-                  background = "gradient",
-                  backgroundProps = {
-                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
-                      color: "#1e293b"
-                  },
                   className = ""
               }) => {
 
     const getBackgroundStyle = () => {
+        // ... (getBackgroundStyle function remains the same) ...
         switch (background) {
             case 'gradient':
                 return { background: backgroundProps.gradient };
@@ -29,7 +30,7 @@ const Hero = ({
                 return { backgroundColor: backgroundProps.color };
             case 'image':
                 return {
-                    backgroundImage: `url(${backgroundProps.imageUrl})`,
+                    backgroundImage: `url(${backgroundProps.imageUrl || ''})`,
                     backgroundSize: 'cover',
                     backgroundPosition: 'center'
                 };
@@ -47,42 +48,36 @@ const Hero = ({
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        <TextType
-                            text={[
-                                "Transform Your Learning Journey with EduConnect",
-                                "Access World-Class Education Resources",
-                                "Learn Anytime, Anywhere with Expert Tutors"
-                            ]}
-                            typingSpeed={75}
-                            pauseDuration={1500}
-                            showCursor={true}
-                            cursorCharacter="|"
-                            as="span"
-                            className="hero-type-animation"
+                        {/* 💡 UPDATED: Using DecryptedText for Title Animation */}
+                        <DecryptedText
+                            text={title}
+                            animateOn="view"
+                            sequential={true} // Decrypts character by character
+                            revealDirection="center" // Decrypts from the center outwards
+                            speed={50}
+                            className="hero-revealed-title"
+                            encryptedClassName="hero-encrypted-char"
                         />
                     </h1>
 
                     <p className="hero-subtitle">
-                        <TextType
-                            text={[
-                                "Access world-class education, expert tutors, and interactive resources all in one platform designed for modern learners.",
-                                "Join thousands of students transforming their education with cutting-edge technology and personalized learning paths.",
-                                "Experience interactive courses, real-time progress tracking, and a global community of learners."
-                            ]}
-                            typingSpeed={40}
-                            initialDelay={500}
-                            pauseDuration={2000}
-                            showCursor={true}
-                            cursorCharacter="|"
-                            as="span"
-                            className="hero-subtitle-animation"
+                        {/* 💡 UPDATED: Using DecryptedText for Subtitle Animation */}
+                        <DecryptedText
+                            text={subtitle}
+                            animateOn="view"
+                            sequential={true}
+                            revealDirection="start" // Decrypts from left to right
+                            speed={25}
+                            className="hero-revealed-subtitle"
+                            encryptedClassName="hero-encrypted-char"
                         />
                     </p>
 
                     <div className="hero-buttons">
+                        {/* ... (buttons remain the same) ... */}
                         {primaryButton && (
                             <button
-                                className="btn btn-primary"
+                                className="btn primary"
                                 onClick={primaryButton.onClick}
                             >
                                 {primaryButton.text}
@@ -91,7 +86,7 @@ const Hero = ({
 
                         {secondaryButton && (
                             <button
-                                className="btn btn-secondary"
+                                className="btn secondary"
                                 onClick={secondaryButton.onClick}
                             >
                                 {secondaryButton.text}

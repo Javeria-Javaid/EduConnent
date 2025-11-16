@@ -1,9 +1,11 @@
-import React from 'react'
-import CardNav from './components/CardNav/CardNav'
-import Hero from './components/Hero/Hero'
-import './index.css'
+import React from 'react';
+import CardNav from './components/CardNav/CardNav';
+import Hero from './components/Hero/Hero';
+import AboutSection from './components/AboutSection/AboutSection'; // 💡 NEW: Import the About Section
+import './index.css';
 
 function App() {
+    // Nav Items Data
     const navItems = [
         {
             label: "Home",
@@ -58,22 +60,22 @@ function App() {
     ]
 
     const heroProps = {
-        title: "Transform Your Learning Journey with EduConnect",
-        subtitle: "Access world-class education, expert tutors, and interactive resources all in one platform designed for modern learners.",
+        title: "Connecting Schools, Parents, Teachers & Vendors — All in One Place.",
+        subtitle: "A simpler way to find schools, apply for admissions, explore teaching jobs, and access trusted educational services — all through one unified platform.",
         primaryButton: {
-            text: "Start Learning Free",
-            onClick: () => console.log("Start Learning clicked")
+            text: "Get Started",
+            onClick: () => console.log("Get Started clicked")
         },
         secondaryButton: {
-            text: "Explore Courses",
-            onClick: () => console.log("Explore Courses clicked")
+            text: "Explore Features",
+            onClick: () => console.log("Explore Features clicked")
         },
         background: "gradient",
         backgroundProps: {
             gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
             color: "#1e293b"
         },
-        className: "fade-in"
+        className: "fade-in",
     }
 
     return (
@@ -87,35 +89,15 @@ function App() {
                 buttonTextColor="#ffffff"
             />
 
-            {/* ONLY use the Hero component - REMOVED the duplicate inline section */}
             <Hero {...heroProps} />
 
-            {/* About Section */}
-            <section id="about" className="page-section about-section">
-                {/* ... about section content remains ... */}
-            </section>
+            {/* 💡 NEW: Render the About Section here */}
+            <AboutSection />
 
-            {/* Features Section */}
-            <section id="features" className="page-section features-section">
-                {/* ... features section content remains ... */}
-            </section>
+            {/* ... other sections go here ... */}
 
-            {/* Roles Section */}
-            <section id="students" className="page-section roles-section">
-                {/* ... roles section content remains ... */}
-            </section>
-
-            {/* Contact Section */}
-            <section id="contact" className="page-section contact-section">
-                {/* ... contact section content remains ... */}
-            </section>
-
-            {/* CTA Section */}
-            <section className="page-section cta-section">
-                {/* ... CTA section content remains ... */}
-            </section>
         </div>
     )
 }
 
-export default App
+export default App;

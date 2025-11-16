@@ -229,6 +229,15 @@
 
     .card-nav {
         height: 65px;
+        /* Default height for closed state */
+    }
+
+    /* 💡 CRUCIAL FIX: Make the main navigation container (CardNav) expand when open */
+    .card-nav.open {
+        height: 90vh !important;
+        max-height: 90vh;
+        /* Allow the entire opened nav panel to scroll if needed */
+        overflow-y: auto;
     }
 
     .hamburger-menu {
@@ -263,8 +272,9 @@
         padding: 0.75rem;
         bottom: 0;
         justify-content: flex-start;
-        overflow-y: auto;
-        max-height: 400px;
+        /* max-height is now controlled by .card-nav.open */
+        max-height: none;
+        padding-bottom: 30px; /* Add extra space for bottom CTA area */
     }
 
     .nav-card {
@@ -299,6 +309,12 @@
 
 /* Small mobile adjustments */
 @media (max-width: 480px) {
+    .card-nav.open {
+        height: 90vh !important;
+        max-height: 90vh;
+        overflow-y: auto;
+    }
+
     .platform-name {
         font-size: 1.1rem;
         letter-spacing: 1px;
@@ -321,7 +337,7 @@
         top: 60px;
         padding: 0.5rem;
         gap: 5px;
-        max-height: 350px;
+        max-height: none; /* Controlled by .card-nav.open */
     }
 
     .nav-card {
