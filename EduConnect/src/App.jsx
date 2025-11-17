@@ -72,7 +72,8 @@ function App() {
         },
         background: "gradient",
         backgroundProps: {
-            gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
+            // 💡 FIX APPLIED: Using the new gradient here to override the default prop.
+            gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147 168 204) 100%)",
             color: "#1e293b"
         },
         className: "fade-in",
@@ -91,7 +92,7 @@ function App() {
 
             <Hero {...heroProps} />
 
-            {/* 💡 NEW: Render the About Section here */}
+            {/* 💡 Render the About Section here */}
             <AboutSection />
 
             {/* ... other sections go here ... */}

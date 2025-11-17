@@ -7,7 +7,8 @@ const Hero = ({
                   subtitle,
                   background = "gradient",
                   backgroundProps = {
-                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
+                      // 💡 UPDATED GRADIENT VALUE
+                      gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147 168 204) 100%)",
                       color: "#1e293b"
                   },
                   primaryButton = {
@@ -22,7 +23,6 @@ const Hero = ({
               }) => {
 
     const getBackgroundStyle = () => {
-        // ... (getBackgroundStyle function remains the same) ...
         switch (background) {
             case 'gradient':
                 return { background: backgroundProps.gradient };
@@ -48,7 +48,7 @@ const Hero = ({
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        {/* 💡 UPDATED: Using DecryptedText for Title Animation */}
+                        {/* 💡 Using DecryptedText for Title Animation */}
                         <DecryptedText
                             text={title}
                             animateOn="view"
@@ -61,7 +61,7 @@ const Hero = ({
                     </h1>
 
                     <p className="hero-subtitle">
-                        {/* 💡 UPDATED: Using DecryptedText for Subtitle Animation */}
+                        {/* 💡 Using DecryptedText for Subtitle Animation */}
                         <DecryptedText
                             text={subtitle}
                             animateOn="view"
@@ -74,7 +74,6 @@ const Hero = ({
                     </p>
 
                     <div className="hero-buttons">
-                        {/* ... (buttons remain the same) ... */}
                         {primaryButton && (
                             <button
                                 className="btn primary"
