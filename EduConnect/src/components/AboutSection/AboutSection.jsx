@@ -15,7 +15,6 @@ const AboutSection = () => {
                 <div className="about-visuals">
 
                     {/* Visual Card 1: Main (admission_portal_2.png) */}
-                    {/* 💡 NEW CLASS: .visual-card-1 */}
                     <div className="visual-card visual-card-main visual-card-1">
                         <img
                             src={admissionPortal2Img}
@@ -25,7 +24,6 @@ const AboutSection = () => {
                     </div>
 
                     {/* Visual Card 2: Side-Top (admission_portal_1.png) */}
-                    {/* 💡 NEW CLASS: .visual-card-2 */}
                     <div className="visual-card visual-card-side visual-card-2">
                         <img
                             src={admissionPortal1Img}
@@ -35,18 +33,13 @@ const AboutSection = () => {
                     </div>
 
                     {/* Visual Card 3: Side-Bottom (admission_portal_3.png) */}
-                    {/* 💡 NEW CLASS: .visual-card-3 */}
+                    {/* 💡 NOTE: The best-ratings-label is removed from this card. */}
                     <div className="visual-card visual-card-bottom visual-card-3">
                         <img
                             src={admissionPortal3Img}
                             alt="Counselor and Student Communication Interface"
                             className="about-image side-bottom"
                         />
-
-                        {/* EMOJIS ELIMINATED - Replacing with a simpler text element */}
-                        <div className="best-ratings-label">
-                            **Trusted by 300+ Institutions**
-                        </div>
                     </div>
                 </div>
 
