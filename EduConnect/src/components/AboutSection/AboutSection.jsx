@@ -15,7 +15,8 @@ const AboutSection = () => {
                 <div className="about-visuals">
 
                     {/* Visual Card 1: Main (admission_portal_2.png) */}
-                    <div className="visual-card visual-card-main">
+                    {/* 💡 NEW CLASS: .visual-card-1 */}
+                    <div className="visual-card visual-card-main visual-card-1">
                         <img
                             src={admissionPortal2Img}
                             alt="Admissions Reports and Analytics Dashboard"
@@ -24,7 +25,8 @@ const AboutSection = () => {
                     </div>
 
                     {/* Visual Card 2: Side-Top (admission_portal_1.png) */}
-                    <div className="visual-card visual-card-side">
+                    {/* 💡 NEW CLASS: .visual-card-2 */}
+                    <div className="visual-card visual-card-side visual-card-2">
                         <img
                             src={admissionPortal1Img}
                             alt="Student Application Journey Map or Process Flow"
@@ -33,14 +35,15 @@ const AboutSection = () => {
                     </div>
 
                     {/* Visual Card 3: Side-Bottom (admission_portal_3.png) */}
-                    <div className="visual-card visual-card-bottom">
+                    {/* 💡 NEW CLASS: .visual-card-3 */}
+                    <div className="visual-card visual-card-bottom visual-card-3">
                         <img
                             src={admissionPortal3Img}
                             alt="Counselor and Student Communication Interface"
                             className="about-image side-bottom"
                         />
 
-                        {/* 💡 EMOJIS ELIMINATED - Replacing with a simpler text element */}
+                        {/* EMOJIS ELIMINATED - Replacing with a simpler text element */}
                         <div className="best-ratings-label">
                             **Trusted by 300+ Institutions**
                         </div>
@@ -68,8 +71,8 @@ const AboutSection = () => {
                         calls, and guesswork. The platform brings everything into one space — school admissions, teaching jobs, vendor services,
                         and communication — so each part of the education cycle moves with a little more clarity. It isn’t trying to replace
                         anyone’s work… just smooth the edges. Whether a parent needs nearby schools, a teacher wants openings that match their
-                        skills, a vendor hopes to connect with institutions, or a school needs an easier way to manage all of this, EduConnect
-                        gives them one shared place to start.
+                        skills, a vendor hopes to connect with institutions, or a school needs an easier way to manage all of this, **EduConnect
+                        gives them one shared place to start.**
                     </p>
 
                     <button className="btn about-cta-button">EXPLORE MORE</button>
