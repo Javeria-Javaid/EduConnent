@@ -64,8 +64,8 @@ const AboutSection = () => {
                         calls, and guesswork. The platform brings everything into one space — school admissions, teaching jobs, vendor services,
                         and communication — so each part of the education cycle moves with a little more clarity. It isn’t trying to replace
                         anyone’s work… just smooth the edges. Whether a parent needs nearby schools, a teacher wants openings that match their
-                        skills, a vendor hopes to connect with institutions, or a school needs an easier way to manage all of this, **EduConnect
-                        gives them one shared place to start.**
+                        skills, a vendor hopes to connect with institutions, or a school needs an easier way to manage all of this, EduConnect
+                        gives them one shared place to start.
                     </p>
 
                     <button className="btn about-cta-button">EXPLORE MORE</button>
