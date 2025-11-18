@@ -5,37 +5,38 @@
     align-items: center;
     justify-content: center;
     padding: 80px 20px;
-    color: white;
+    /* ✅ Changed text color from white to dark blue/slate */
+    color: #1e293b;
 }
 
 .hero-container {
-    max-width: 1200px;
-    width: 100%;
     /* Max-width for text content when centered */
     max-width: 800px;
+    width: 100%;
+    z-index: 2;
 }
 
-/* 💡 GRID CONTAINER FOR CONTENT & VISUALS - REMOVED */
-/* .hero-content-grid styles are removed */
+/* ❌ Removed: .hero-background-shape styles (Floating curve) */
+/* ❌ Removed: .hero-content-grid styles (Two-column layout) */
 
-/* --- TEXT CONTENT (NOW FULL-WIDTH) --- */
+
+/* --- TEXT CONTENT (NOW FULL-WIDTH, CENTERED) --- */
 .hero-text-content {
     /* Center the content */
     text-align: center;
     padding: 0;
 }
 
-/* 🖋️ TITLE STYLES */
+/* 🖋️ TITLE STYLES (RESTORED STYLISH TYPOGRAPHY) */
 .hero-title {
-    /* Base Typography (RESTORED ELEGANT LOOK) */
     font-size: 2.5rem;
     font-weight: 500;
     margin-bottom: 24px;
     line-height: 1.2;
-    /* ✅ RESTORED STYLES: Italic font and Times New Roman */
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    /* Removed dark text shadow as background is now light */
+    text-shadow: none;
 
     overflow: visible;
     display: block;
@@ -56,17 +57,16 @@
     display: block;
 }
 
-/* ✨ DECRYPTEDTEXT ANIMATION STYLES (RESTORED) */
+/* ✨ DECRYPTEDTEXT ANIMATION STYLES */
 /* Style for characters that are currently scrambling/encrypted */
 .hero-encrypted-char {
-    /* Optional: Use a blocky/monospace font for a terminal effect */
     font-family: monospace;
 
-    /* 🎨 RESTORED COLOR: Primary Blue/Teal with subtle glow */
+    /* Primary Blue/Teal with subtle glow - remains effective on light background */
     color: #66a1be;
-    text-shadow: 0 0 5px rgba(102, 161, 190, 0.7);
+    text-shadow: 0 0 5px rgba(102, 161, 190, 0.5);
 
-    transition: color 0.1s; /* Quick transition for visual effect */
+    transition: color 0.1s;
 }
 
 /* Button Container */
@@ -78,14 +78,10 @@
     justify-content: center; /* Align buttons to the center */
 }
 
-/* --- RIGHT COLUMN: VISUAL CONTENT - REMOVED --- */
-/* .hero-visual-content and .visual-placeholder styles are removed */
+/* ❌ Removed: .hero-visual-content and device mockup styles */
 
 /* 📱 Responsive design */
 @media (max-width: 992px) {
-    /* No longer needed, as it's a single column layout */
-    /* .hero-content-grid styles are removed */
-
     .hero-title {
         font-size: 2.8rem;
     }

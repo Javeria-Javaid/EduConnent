@@ -50,7 +50,8 @@ function App() {
                 { label: "For Educators", href: "#educators", ariaLabel: "Features for educators" },
                 { label: "For Institutions", href: "#institutions", ariaLabel: "Features for institutions" }
             ]
-        },
+        }
+        ,
         {
             label: "Contact",
             bgColor: "#ffe4e6",
@@ -74,11 +75,11 @@ function App() {
             text: "Explore Features",
             onClick: () => console.log("Explore Features clicked")
         },
-        background: "gradient",
+        background: "solid", // Changed to 'solid'
         backgroundProps: {
-            // ✅ Solid dark background matching the footer
-            gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
-            color: "#1e293b"
+            // ✅ Setting background to white to meet new design requirement
+            gradient: "linear-gradient(135deg, #ffffff 0%, #ffffff 100%)",
+            color: "#ffffff"
         },
         className: "fade-in",
     }
