@@ -1,4 +1,4 @@
-/* Hero section styles */
+/* --- HERO SECTION CONTAINER --- */
 .hero-section {
     min-height: 100vh;
     display: flex;
@@ -9,61 +9,57 @@
 }
 
 .hero-container {
-    /* Updated max-width for better centering and line break control */
-    max-width: 900px;
+    max-width: 1200px; /* Increased max width for the grid */
     width: 100%;
-    text-align: center;
+    /* ❌ REMOVED: text-align: center; from here */
 }
 
-/* 🖋️ TITLE STYLES & TWO-LINE LIMIT FIX */
+/* 💡 NEW: GRID CONTAINER FOR CONTENT & VISUALS */
+.hero-content-grid {
+    display: grid;
+    /* Asymmetrical layout: 1.2 parts for text, 1 part for visual */
+    grid-template-columns: 1.2fr 1fr;
+    gap: 40px;
+    align-items: center; /* Vertically align items in the center */
+    text-align: left; /* Default text alignment for the whole grid */
+}
+
+/* --- LEFT COLUMN: TEXT CONTENT --- */
+.hero-text-content {
+    /* Ensures content starts at the left edge */
+    padding-right: 20px;
+}
+
+/* 🖋️ TITLE STYLES */
 .hero-title {
-    /* Base Typography (Elegant Look) */
-    /* Updated font size to encourage desired line break */
-    font-size: 2.5rem;
-    font-weight: 500;
+    font-size: 3rem; /* Increased size since it's not centered */
+    font-weight: 700; /* Bolder look */
     margin-bottom: 24px;
     line-height: 1.2;
-    font-style: italic;
-    font-family: 'Times New Roman', Times, serif;
-    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    font-style: normal; /* Changed back to normal style for dominance */
+    font-family: Arial, sans-serif; /* Changed back to a modern font */
+    text-shadow: none; /* Removed heavy text shadow */
 
-    /* 💡 Line Clamp Fix: Limits text container to 2 lines */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
+    /* ❌ REMOVED: Line Clamp Fix here (We don't need line clamp for the main title) */
+    overflow: visible;
+    display: block;
 }
 
-/* 📝 SUBTITLE STYLES & TWO-LINE LIMIT FIX */
+/* 📝 SUBTITLE STYLES */
 .hero-subtitle {
     font-size: 1.25rem;
     margin-bottom: 40px;
     line-height: 1.6;
     opacity: 0.9;
 
-    /* Updated max-width for subtitle to enforce two lines */
-    max-width: 650px;
-    margin-left: auto;
-    margin-right: auto;
+    /* ❌ REMOVED: Max-width and auto-margins for centering */
+    max-width: none;
+    margin-left: 0;
+    margin-right: 0;
 
-    /* 💡 Line Clamp Fix: Limits text container to 2 lines */
-    overflow: hidden;
-    display: -webkit-box;
-    -webkit-box-orient: vertical;
-    -webkit-line-clamp: 2;
-}
-
-/* ✨ DECRYPTEDTEXT ANIMATION STYLES */
-/* Style for characters that are currently scrambling/encrypted */
-.hero-encrypted-char {
-    /* Optional: Use a blocky/monospace font for a terminal effect */
-    font-family: monospace;
-
-    /* 🎨 UPDATED COLOR: #66a1be (Primary Blue/Teal) */
-    color: #66a1be;
-    text-shadow: 0 0 5px rgba(102, 161, 190, 0.7); /* Subtle glow matching the blue */
-
-    transition: color 0.1s; /* Quick transition for visual effect */
+    /* ❌ REMOVED: Line Clamp Fix here */
+    overflow: visible;
+    display: block;
 }
 
 /* Button Container */
@@ -72,20 +68,73 @@
     gap: 16px;
     margin-top: 32px;
     flex-wrap: wrap;
+    justify-content: flex-start; /* Align buttons to the left */
+}
+
+/* --- RIGHT COLUMN: VISUAL CONTENT --- */
+.hero-visual-content {
+    display: flex;
     justify-content: center;
+    align-items: center;
+    height: 100%;
+}
+
+.visual-placeholder {
+    width: 100%;
+    height: 400px;
+    max-width: 450px;
+    background: rgba(255, 255, 255, 0.1); /* Semi-transparent placeholder */
+    border: 2px solid #66a1be; /* Primary color border */
+    border-radius: 12px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 1.1rem;
+    color: #ccc;
+    text-align: center;
+    padding: 20px;
 }
 
 /* 📱 Responsive design */
+@media (max-width: 992px) {
+    .hero-content-grid {
+        /* Stack columns vertically on smaller tablets/laptops */
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-text-content {
+        /* Center text content when stacked */
+        text-align: center;
+        padding-right: 0;
+    }
+
+    .hero-buttons {
+        /* Center buttons when stacked */
+        justify-content: center;
+    }
+
+    .hero-title {
+        font-size: 2.8rem;
+    }
+
+    .hero-visual-content {
+        /* Push visual content down for better flow */
+        order: 1;
+    }
+}
+
 @media (max-width: 768px) {
-    /* Increase title font size slightly for small screens */
     .hero-title {
         font-size: 2.2rem;
-        /* Line clamp remains 2 */
     }
 
     .hero-subtitle {
         font-size: 1.1rem;
-        /* Line clamp remains 2 */
+    }
+
+    .visual-placeholder {
+        height: 300px;
     }
 
     .hero-buttons {
@@ -93,7 +142,6 @@
         align-items: center;
     }
 
-    /* Target the button size on small screens */
     .hero-buttons > .btn {
         width: 200px;
     }

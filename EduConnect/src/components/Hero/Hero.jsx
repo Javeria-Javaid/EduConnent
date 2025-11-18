@@ -7,8 +7,7 @@ const Hero = ({
                   subtitle,
                   background = "gradient",
                   backgroundProps = {
-                      // 💡 CURRENT DEFAULT GRADIENT (Dark Teal to Light Gray)
-                      gradient: "linear-gradient(154deg, rgb(19 70 77) 40%, rgb(219 219 219) 166%)",
+                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)", // Using the solid color from App.jsx
                       color: "#1e293b"
                   },
                   primaryButton = {
@@ -25,6 +24,7 @@ const Hero = ({
     const getBackgroundStyle = () => {
         switch (background) {
             case 'gradient':
+                // Check App.jsx heroProps for the current gradient
                 return { background: backgroundProps.gradient };
             case 'solid':
                 return { backgroundColor: backgroundProps.color };
@@ -46,53 +46,57 @@ const Hero = ({
             style={getBackgroundStyle()}
         >
             <div className="hero-container">
-                <div className="hero-content">
-                    <h1 className="hero-title">
-                        {/* 💡 DecryptedText for Title Animation */}
-                        <DecryptedText
-                            text={title}
-                            animateOn="view"
-                            sequential={true} // Decrypts character by character
-                            revealDirection="center" // Decrypts from the center outwards
-                            // ✅ FASTER SPEED for title (15ms)
-                            speed={15}
-                            className="hero-revealed-title"
-                            encryptedClassName="hero-encrypted-char"
-                        />
-                    </h1>
+                {/* 💡 NEW: Flex/Grid container for two columns */}
+                <div className="hero-content-grid">
 
-                    <p className="hero-subtitle">
-                        {/* 💡 DecryptedText for Subtitle Animation */}
-                        <DecryptedText
-                            text={subtitle}
-                            animateOn="view"
-                            sequential={true}
-                            revealDirection="start" // Decrypts from left to right
-                            // ✅ FASTER SPEED for subtitle (8ms)
-                            speed={8}
-                            className="hero-revealed-subtitle"
-                            encryptedClassName="hero-encrypted-char"
-                        />
-                    </p>
+                    {/* Left Column: Text Content */}
+                    <div className="hero-text-content">
+                        <h1 className="hero-title">
+                            <DecryptedText
+                                text={title}
+                                animateOn="view"
+                                sequential={true}
+                                revealDirection="center"
+                                speed={15}
+                                className="hero-revealed-title"
+                                encryptedClassName="hero-encrypted-char"
+                            />
+                        </h1>
 
-                    <div className="hero-buttons">
-                        {primaryButton && (
-                            <button
-                                className="btn primary"
-                                onClick={primaryButton.onClick}
-                            >
-                                {primaryButton.text}
-                            </button>
-                        )}
+                        <p className="hero-subtitle">
+                            <DecryptedText
+                                text={subtitle}
+                                animateOn="view"
+                                sequential={true}
+                                revealDirection="start"
+                                speed={8}
+                                className="hero-revealed-subtitle"
+                                encryptedClassName="hero-encrypted-char"
+                            />
+                        </p>
 
-                        {secondaryButton && (
-                            <button
-                                className="btn secondary"
-                                onClick={secondaryButton.onClick}
-                            >
-                                {secondaryButton.text}
-                            </button>
-                        )}
+                        <div className="hero-buttons">
+                            {primaryButton && (
+                                <button className="btn primary" onClick={primaryButton.onClick}>
+                                    {primaryButton.text}
+                                </button>
+                            )}
+
+                            {secondaryButton && (
+                                <button className="btn secondary" onClick={secondaryButton.onClick}>
+                                    {secondaryButton.text}
+                                </button>
+                            )}
+                        </div>
+                    </div>
+
+                    {/* Right Column: Visual Element */}
+                    <div className="hero-visual-content">
+                        {/* 💡 Placeholder for an eye-catching graphic or device mockup */}
+                        <div className="visual-placeholder">
+                            {/* You can replace this with an <img> tag pointing to a relevant asset */}
+                            <p>Dynamic Platform Visualization</p>
+                        </div>
                     </div>
                 </div>
             </div>
