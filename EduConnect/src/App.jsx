@@ -1,11 +1,12 @@
 import React from 'react';
 import CardNav from './components/CardNav/CardNav';
 import Hero from './components/Hero/Hero';
-import AboutSection from './components/AboutSection/AboutSection'; // 💡 NEW: Import the About Section
+import AboutSection from './components/AboutSection/AboutSection';
+import FeatureSection from './components/FeatureSection/FeatureSection';
 import './index.css';
 
 function App() {
-    // Nav Items Data
+    // Nav Items Data (unchanged)
     const navItems = [
         {
             label: "Home",
@@ -72,8 +73,8 @@ function App() {
         },
         background: "gradient",
         backgroundProps: {
-            // 💡 FIX APPLIED: Using the new gradient here to override the default prop.
-            gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147 168 204) 100%)",
+            // ✅ THIS IS THE LINE YOU MUST ENSURE IS CORRECT IN YOUR FILE:
+            gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147, 168, 204) 100%)",
             color: "#1e293b"
         },
         className: "fade-in",
@@ -92,9 +93,8 @@ function App() {
 
             <Hero {...heroProps} />
 
-            {/* 💡 Render the About Section here */}
             <AboutSection />
-
+            <FeatureSection />
             {/* ... other sections go here ... */}
 
         </div>
