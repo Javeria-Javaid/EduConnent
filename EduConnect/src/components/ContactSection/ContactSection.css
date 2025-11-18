@@ -184,4 +184,25 @@
     .contact-form {
         padding: 20px;
     }
+}/* ... (Existing styles above) ... */
+
+.social-links {
+    margin-top: 30px;
+    display: flex;
+    gap: 20px;
 }
+
+.social-icon-link {
+    /* 💡 Ensure proper styling for the Lucide SVG icon */
+    color: #66a1be;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    transition: color 0.2s;
+}
+
+.social-icon-link:hover {
+    color: #374151;
+}
+
+/* ... (Existing responsive adjustments below) ... */

@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
-import { Mail, Phone, MapPin, Send } from 'lucide-react';
+// 💡 Corrected imports to include Lucide social icons
+import { Mail, Phone, MapPin, Send, Linkedin, Twitter } from 'lucide-react';
 import './ContactSection.css';
 
 const ContactSection = () => {
@@ -22,6 +23,7 @@ const ContactSection = () => {
         setFormData({ name: '', email: '', subject: '', message: '' });
     };
 
+    // The component structure is enclosed in a single return statement
     return (
         <section id="contact" className="contact-section">
             <div className="contact-container">
@@ -56,20 +58,13 @@ const ContactSection = () => {
                             <p>123 EduConnect Plaza, Suite 400, Knowledge City, Global</p>
                         </div>
 
-                        {/* Social Media Links (Optional but Recommended) */}
+                        {/* ✅ Corrected Social Media Links using Lucide components */}
                         <div className="social-links">
-                            {/* NOTE: You would use specific social media icons (e.g., from Lucide or FontAwesome) here */}
                             <a href="#!" aria-label="LinkedIn" className="social-icon-link">
-                                <i className="fab fa-linkedin"></i>
-
-                                [Image of LinkedIn icon]
-
+                                <Linkedin size={24} />
                             </a>
                             <a href="#!" aria-label="Twitter" className="social-icon-link">
-                                <i className="fab fa-twitter"></i>
-
-                                [Image of Twitter icon]
-
+                                <Twitter size={24} />
                             </a>
                         </div>
                     </div>

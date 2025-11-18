@@ -99,7 +99,7 @@ function App() {
             <FeatureSection />
             <RoleSection />
             <ContactSection/>
-            
+
             {/* ... other sections go here ... */}
 
         </div>
