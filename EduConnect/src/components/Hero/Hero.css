@@ -5,29 +5,35 @@
     align-items: center;
     justify-content: center;
     padding: 80px 20px;
-    /* ✅ Changed text color from white to dark blue/slate */
+    /* Changed text color from white to dark blue/slate */
     color: #1e293b;
 }
 
 .hero-container {
-    /* Max-width for text content when centered */
-    max-width: 800px;
+    /* Set a wide max-width for the grid container */
+    max-width: 1200px;
     width: 100%;
     z-index: 2;
 }
 
-/* ❌ Removed: .hero-background-shape styles (Floating curve) */
-/* ❌ Removed: .hero-content-grid styles (Two-column layout) */
-
-
-/* --- TEXT CONTENT (NOW FULL-WIDTH, CENTERED) --- */
-.hero-text-content {
-    /* Center the content */
-    text-align: center;
-    padding: 0;
+/* 💡 RE-INTRODUCED: GRID CONTAINER FOR CONTENT & VISUALS */
+.hero-content-grid {
+    display: grid;
+    /* Two-column layout: 1.2 parts for text, 1 part for visual */
+    grid-template-columns: 1.2fr 1fr;
+    gap: 60px; /* Increased gap for separation */
+    align-items: center; /* Vertically align items in the center */
+    text-align: left;
 }
 
-/* 🖋️ TITLE STYLES (RESTORED STYLISH TYPOGRAPHY) */
+/* --- LEFT COLUMN: TEXT CONTENT --- */
+.hero-text-content {
+    /* Reset text alignment for two-column layout */
+    text-align: left;
+    padding-right: 0; /* Remove padding */
+}
+
+/* 🖋️ TITLE STYLES */
 .hero-title {
     font-size: 2.5rem;
     font-weight: 500;
@@ -35,9 +41,7 @@
     line-height: 1.2;
     font-style: italic;
     font-family: 'Times New Roman', Times, serif;
-    /* Removed dark text shadow as background is now light */
     text-shadow: none;
-
     overflow: visible;
     display: block;
 }
@@ -48,24 +52,18 @@
     margin-bottom: 40px;
     line-height: 1.6;
     opacity: 0.9;
-
     max-width: none;
-    margin-left: auto; /* Center the block element */
-    margin-right: auto; /* Center the block element */
-
+    margin-left: 0; /* Align left */
+    margin-right: 0; /* Align left */
     overflow: visible;
     display: block;
 }
 
 /* ✨ DECRYPTEDTEXT ANIMATION STYLES */
-/* Style for characters that are currently scrambling/encrypted */
 .hero-encrypted-char {
     font-family: monospace;
-
-    /* Primary Blue/Teal with subtle glow - remains effective on light background */
     color: #66a1be;
     text-shadow: 0 0 5px rgba(102, 161, 190, 0.5);
-
     transition: color 0.1s;
 }
 
@@ -75,13 +73,131 @@
     gap: 16px;
     margin-top: 32px;
     flex-wrap: wrap;
-    justify-content: center; /* Align buttons to the center */
+    justify-content: flex-start; /* Align buttons to the left */
 }
 
-/* ❌ Removed: .hero-visual-content and device mockup styles */
+/* --- RIGHT COLUMN: LOGO AND FEATURES --- */
+.hero-visual-content {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100%;
+    /* Added to contain absolutely positioned features */
+    position: relative;
+}
+
+.logo-feature-wrapper {
+    position: relative;
+    width: 380px; /* Container size for the entire circular arrangement */
+    height: 380px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.hero-logo {
+    max-width: 65%; /* Size of the logo relative to its wrapper */
+    height: auto;
+    display: block;
+    z-index: 10; /* Ensure logo is on top of circles */
+}
+
+/* Feature Circles (Matching Card Color) */
+.feature-circle {
+    /* 💡 IMPORTANT: REPLACE THIS WITH YOUR NAV CARD COLOR */
+    --card-color: #3f68a7;
+
+    position: absolute;
+    width: 130px; /* Size of each feature circle */
+    height: 130px;
+    background-color: var(--card-color);
+    border-radius: 50%;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    font-size: 0.9rem;
+    padding: 10px;
+    box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+    color: white; /* Ensure text is visible on the colored background */
+    z-index: 5;
+
+    /* Variables for positioning: --i=index, --total=total count */
+    /* Rotate the entire circle, translate it away from the center (radius),
+       then counter-rotate the content to keep text upright */
+    transform:
+            rotate(calc(var(--i) * (360deg / var(--total))))
+            translate(190px) /* 💡 This value controls the radius of the feature circle arrangement */
+            rotate(calc(var(--i) * (-360deg / var(--total))));
+
+    transition: all 0.3s ease-in-out;
+}
+
+.feature-circle:hover {
+    box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
+    transform:
+            rotate(calc(var(--i) * (360deg / var(--total))))
+            translate(200px) /* Slight pull-out on hover */
+            rotate(calc(var(--i) * (-360deg / var(--total))))
+            scale(1.05);
+}
+
+.feature-icon {
+    font-size: 2rem;
+    margin-bottom: 5px;
+}
+
+.feature-name {
+    font-weight: 600;
+    line-height: 1.2;
+}
+
 
 /* 📱 Responsive design */
 @media (max-width: 992px) {
+    .hero-content-grid {
+        /* Stack columns vertically on smaller screens */
+        grid-template-columns: 1fr;
+        gap: 40px;
+    }
+
+    .hero-text-content {
+        /* Center content when stacked */
+        text-align: center;
+    }
+
+    .hero-buttons {
+        /* Center buttons when stacked */
+        justify-content: center;
+    }
+
+    .hero-visual-content {
+        /* Push visual content down for better flow */
+        order: 1;
+        margin-top: 40px;
+    }
+
+    /* Adjust visual element size for smaller screens */
+    .logo-feature-wrapper {
+        width: 300px;
+        height: 300px;
+    }
+
+    .feature-circle {
+        width: 100px;
+        height: 100px;
+        font-size: 0.8rem;
+        transform:
+                rotate(calc(var(--i) * (360deg / var(--total))))
+                translate(150px) /* Smaller radius */
+                rotate(calc(var(--i) * (-360deg / var(--total))));
+    }
+
+    .feature-icon {
+        font-size: 1.5rem;
+    }
+
     .hero-title {
         font-size: 2.8rem;
     }
@@ -103,5 +219,20 @@
 
     .hero-buttons > .btn {
         width: 200px;
+    }
+
+    .logo-feature-wrapper {
+        width: 250px;
+        height: 250px;
+    }
+
+    .feature-circle {
+        width: 80px;
+        height: 80px;
+        font-size: 0.7rem;
+        transform:
+                rotate(calc(var(--i) * (360deg / var(--total))))
+                translate(120px) /* Even smaller radius */
+                rotate(calc(var(--i) * (-360deg / var(--total))));
     }
 }
