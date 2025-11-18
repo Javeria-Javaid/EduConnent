@@ -17,7 +17,7 @@ const Hero = ({
                   },
                   secondaryButton = {
                       text: "Explore Features",
-                      onClick: () => console.log("Explore Features clicked")
+                      onClick: () => console.log("Secondary Features clicked")
                   },
                   className = ""
               }) => {
@@ -46,10 +46,6 @@ const Hero = ({
             style={getBackgroundStyle()}
         >
             <div className="hero-container">
-
-                {/* 💡 NEW: Absolute-positioned background shape for the floating blue curve effect */}
-                <div className="hero-background-shape"></div>
-
                 {/* Two-column grid container */}
                 <div className="hero-content-grid">
 
@@ -61,7 +57,6 @@ const Hero = ({
                                 animateOn="view"
                                 sequential={true}
                                 revealDirection="center"
-                                // ✅ Faster speed
                                 speed={15}
                                 className="hero-revealed-title"
                                 encryptedClassName="hero-encrypted-char"
@@ -74,7 +69,6 @@ const Hero = ({
                                 animateOn="view"
                                 sequential={true}
                                 revealDirection="start"
-                                // ✅ Faster speed
                                 speed={8}
                                 className="hero-revealed-subtitle"
                                 encryptedClassName="hero-encrypted-char"
@@ -103,6 +97,7 @@ const Hero = ({
                             {/* Device 1: Tablet/Desktop View (Background) */}
                             <div className="device desktop">
                                 <img
+                                    // ✅ Using your uploaded image
                                     src="admission_portal_3.png"
                                     alt="EduConnect Desktop Dashboard View"
                                     className="device-screen"
@@ -112,6 +107,7 @@ const Hero = ({
                             {/* Device 2: Mobile View (Foreground) */}
                             <div className="device mobile">
                                 <img
+                                    // ✅ Using your uploaded image
                                     src="admission_portal_1.png"
                                     alt="EduConnect Mobile Application"
                                     className="device-screen"
