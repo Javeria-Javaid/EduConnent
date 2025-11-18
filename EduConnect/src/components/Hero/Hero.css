@@ -11,36 +11,35 @@
 .hero-container {
     max-width: 1200px; /* Increased max width for the grid */
     width: 100%;
-    /* ❌ REMOVED: text-align: center; from here */
 }
 
-/* 💡 NEW: GRID CONTAINER FOR CONTENT & VISUALS */
+/* 💡 GRID CONTAINER FOR CONTENT & VISUALS (New Two-Column Layout) */
 .hero-content-grid {
     display: grid;
     /* Asymmetrical layout: 1.2 parts for text, 1 part for visual */
     grid-template-columns: 1.2fr 1fr;
     gap: 40px;
     align-items: center; /* Vertically align items in the center */
-    text-align: left; /* Default text alignment for the whole grid */
+    text-align: left;
 }
 
 /* --- LEFT COLUMN: TEXT CONTENT --- */
 .hero-text-content {
-    /* Ensures content starts at the left edge */
     padding-right: 20px;
 }
 
-/* 🖋️ TITLE STYLES */
+/* 🖋️ TITLE STYLES (RESTORED STYLISH TYPOGRAPHY) */
 .hero-title {
-    font-size: 3rem; /* Increased size since it's not centered */
-    font-weight: 700; /* Bolder look */
+    /* Base Typography (RESTORED ELEGANT LOOK) */
+    font-size: 2.5rem;
+    font-weight: 500;
     margin-bottom: 24px;
     line-height: 1.2;
-    font-style: normal; /* Changed back to normal style for dominance */
-    font-family: Arial, sans-serif; /* Changed back to a modern font */
-    text-shadow: none; /* Removed heavy text shadow */
+    /* ✅ RESTORED STYLES: Italic font and Times New Roman */
+    font-style: italic;
+    font-family: 'Times New Roman', Times, serif;
+    text-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
 
-    /* ❌ REMOVED: Line Clamp Fix here (We don't need line clamp for the main title) */
     overflow: visible;
     display: block;
 }
@@ -52,14 +51,25 @@
     line-height: 1.6;
     opacity: 0.9;
 
-    /* ❌ REMOVED: Max-width and auto-margins for centering */
     max-width: none;
     margin-left: 0;
     margin-right: 0;
 
-    /* ❌ REMOVED: Line Clamp Fix here */
     overflow: visible;
     display: block;
+}
+
+/* ✨ DECRYPTEDTEXT ANIMATION STYLES (RESTORED) */
+/* Style for characters that are currently scrambling/encrypted */
+.hero-encrypted-char {
+    /* Optional: Use a blocky/monospace font for a terminal effect */
+    font-family: monospace;
+
+    /* 🎨 RESTORED COLOR: Primary Blue/Teal with subtle glow */
+    color: #66a1be;
+    text-shadow: 0 0 5px rgba(102, 161, 190, 0.7);
+
+    transition: color 0.1s; /* Quick transition for visual effect */
 }
 
 /* Button Container */
@@ -71,31 +81,67 @@
     justify-content: flex-start; /* Align buttons to the left */
 }
 
-/* --- RIGHT COLUMN: VISUAL CONTENT --- */
+/* --- RIGHT COLUMN: VISUAL CONTENT (Stacked Device Mockup) --- */
 .hero-visual-content {
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+    padding: 0;
 }
 
-.visual-placeholder {
+.device-mockup-stack {
+    position: relative;
     width: 100%;
-    height: 400px;
-    max-width: 450px;
-    background: rgba(255, 255, 255, 0.1); /* Semi-transparent placeholder */
-    border: 2px solid #66a1be; /* Primary color border */
-    border-radius: 12px;
+    max-width: 500px; /* Max size for the stack container */
+    height: 450px; /* Fixed height for visual consistency */
     display: flex;
     justify-content: center;
     align-items: center;
-    font-size: 1.1rem;
-    color: #ccc;
-    text-align: center;
-    padding: 20px;
 }
 
-/* 📱 Responsive design */
+.device {
+    position: absolute;
+    border-radius: 18px; /* Standard device corner radius */
+    overflow: hidden;
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.4);
+    transition: transform 0.5s ease-out, box-shadow 0.5s ease;
+    border: 3px solid rgba(255, 255, 255, 0.5); /* Light border for contrast */
+}
+
+/* 1. Desktop/Tablet Device */
+.device.desktop {
+    width: 90%;
+    height: 80%;
+    /* Position slightly offset back and center-right */
+    transform: perspective(1000px) rotateY(-10deg) translateZ(-50px);
+    z-index: 5;
+    background: #000;
+}
+
+/* 2. Mobile Device (Overlaid and Forward) */
+.device.mobile {
+    width: 25%;
+    height: 60%;
+    border-radius: 30px; /* Tighter corner radius for mobile */
+    /* Position forward, centered, and slightly tilted */
+    transform: perspective(1000px) rotateY(10deg) translateZ(50px) translateY(-5%);
+    z-index: 10;
+    /* Simulate a notch/bezel effect */
+    border: 8px solid #333;
+    background: #fff;
+}
+
+/* Screen Image */
+.device-screen {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+
+/* 📱 RESPONSIVE ADJUSTMENTS */
 @media (max-width: 992px) {
     .hero-content-grid {
         /* Stack columns vertically on smaller tablets/laptops */
@@ -122,6 +168,22 @@
         /* Push visual content down for better flow */
         order: 1;
     }
+
+    /* Device Mockup Adjustments */
+    .device-mockup-stack {
+        height: 350px;
+        margin-top: 20px;
+    }
+
+    .device.desktop {
+        /* Less dramatic tilt when centered */
+        transform: perspective(1000px) rotateY(0deg) translateZ(-20px);
+    }
+
+    .device.mobile {
+        /* Less dramatic tilt when centered */
+        transform: perspective(1000px) rotateY(0deg) translateZ(20px) translateY(-5%);
+    }
 }
 
 @media (max-width: 768px) {
@@ -133,8 +195,12 @@
         font-size: 1.1rem;
     }
 
-    .visual-placeholder {
+    .device-mockup-stack {
         height: 300px;
+    }
+
+    .device.mobile {
+        width: 35%; /* Make mobile device slightly larger on small screens */
     }
 
     .hero-buttons {

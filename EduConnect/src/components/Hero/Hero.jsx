@@ -7,16 +7,17 @@ const Hero = ({
                   subtitle,
                   background = "gradient",
                   backgroundProps = {
-                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)", // Using the solid color from App.jsx
+                      // Using the solid dark color configuration from App.jsx
+                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
                       color: "#1e293b"
                   },
                   primaryButton = {
-                      text: "Start Learning Free",
+                      text: "Get Started",
                       onClick: () => console.log("Primary button clicked")
                   },
                   secondaryButton = {
-                      text: "Explore Courses",
-                      onClick: () => console.log("Secondary button clicked")
+                      text: "Explore Features",
+                      onClick: () => console.log("Secondary Features clicked")
                   },
                   className = ""
               }) => {
@@ -24,7 +25,6 @@ const Hero = ({
     const getBackgroundStyle = () => {
         switch (background) {
             case 'gradient':
-                // Check App.jsx heroProps for the current gradient
                 return { background: backgroundProps.gradient };
             case 'solid':
                 return { backgroundColor: backgroundProps.color };
@@ -46,7 +46,7 @@ const Hero = ({
             style={getBackgroundStyle()}
         >
             <div className="hero-container">
-                {/* 💡 NEW: Flex/Grid container for two columns */}
+                {/* Two-column grid container */}
                 <div className="hero-content-grid">
 
                     {/* Left Column: Text Content */}
@@ -90,12 +90,30 @@ const Hero = ({
                         </div>
                     </div>
 
-                    {/* Right Column: Visual Element */}
+                    {/* Right Column: Visual Element (Stacked Device Mockup) */}
                     <div className="hero-visual-content">
-                        {/* 💡 Placeholder for an eye-catching graphic or device mockup */}
-                        <div className="visual-placeholder">
-                            {/* You can replace this with an <img> tag pointing to a relevant asset */}
-                            <p>Dynamic Platform Visualization</p>
+                        <div className="device-mockup-stack">
+
+                            {/* Device 1: Tablet/Desktop View (Background) */}
+                            <div className="device desktop">
+                                <img
+                                    // ✅ Using your uploaded image
+                                    src="admission_portal_3.png"
+                                    alt="EduConnect Desktop Dashboard View"
+                                    className="device-screen"
+                                />
+                            </div>
+
+                            {/* Device 2: Mobile View (Foreground) */}
+                            <div className="device mobile">
+                                <img
+                                    // ✅ Using your uploaded image
+                                    src="admission_portal_1.png"
+                                    alt="EduConnect Mobile Application"
+                                    className="device-screen"
+                                />
+                            </div>
+
                         </div>
                     </div>
                 </div>
