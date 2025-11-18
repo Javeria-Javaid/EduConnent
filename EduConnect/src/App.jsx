@@ -3,6 +3,7 @@ import CardNav from './components/CardNav/CardNav';
 import Hero from './components/Hero/Hero';
 import AboutSection from './components/AboutSection/AboutSection';
 import FeatureSection from './components/FeatureSection/FeatureSection';
+import RoleSection from './components/RoleSection/RoleSection';
 import './index.css';
 
 function App() {
@@ -95,6 +96,7 @@ function App() {
 
             <AboutSection />
             <FeatureSection />
+            <RoleSection />
             {/* ... other sections go here ... */}
 
         </div>
