@@ -7,8 +7,8 @@ const Hero = ({
                   subtitle,
                   background = "gradient",
                   backgroundProps = {
-                      // 💡 UPDATED GRADIENT VALUE
-                      gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147 168 204) 100%)",
+                      // 💡 CURRENT DEFAULT GRADIENT (Dark Teal to Light Gray)
+                      gradient: "linear-gradient(154deg, rgb(19 70 77) 40%, rgb(219 219 219) 166%)",
                       color: "#1e293b"
                   },
                   primaryButton = {
@@ -48,26 +48,28 @@ const Hero = ({
             <div className="hero-container">
                 <div className="hero-content">
                     <h1 className="hero-title">
-                        {/* 💡 Using DecryptedText for Title Animation */}
+                        {/* 💡 DecryptedText for Title Animation */}
                         <DecryptedText
                             text={title}
                             animateOn="view"
                             sequential={true} // Decrypts character by character
                             revealDirection="center" // Decrypts from the center outwards
-                            speed={50}
+                            // ✅ FASTER SPEED for title (15ms)
+                            speed={15}
                             className="hero-revealed-title"
                             encryptedClassName="hero-encrypted-char"
                         />
                     </h1>
 
                     <p className="hero-subtitle">
-                        {/* 💡 Using DecryptedText for Subtitle Animation */}
+                        {/* 💡 DecryptedText for Subtitle Animation */}
                         <DecryptedText
                             text={subtitle}
                             animateOn="view"
                             sequential={true}
                             revealDirection="start" // Decrypts from left to right
-                            speed={25}
+                            // ✅ FASTER SPEED for subtitle (8ms)
+                            speed={8}
                             className="hero-revealed-subtitle"
                             encryptedClassName="hero-encrypted-char"
                         />

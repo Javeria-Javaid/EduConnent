@@ -5,6 +5,7 @@ import AboutSection from './components/AboutSection/AboutSection';
 import FeatureSection from './components/FeatureSection/FeatureSection';
 import RoleSection from './components/RoleSection/RoleSection';
 import ContactSection from './components/ContactSection/ContactSection';
+import Footer from './components/Footer/Footer';
 import './index.css';
 
 function App() {
@@ -75,8 +76,8 @@ function App() {
         },
         background: "gradient",
         backgroundProps: {
-            // ✅ THIS IS THE LINE YOU MUST ENSURE IS CORRECT IN YOUR FILE:
-            gradient: "linear-gradient(135deg, rgb(30, 41, 59) 0%, rgb(147, 168, 204) 100%)",
+            // ✅ UPDATED: Setting gradient start and end to #1e293b for a solid color
+            gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
             color: "#1e293b"
         },
         className: "fade-in",
@@ -99,7 +100,7 @@ function App() {
             <FeatureSection />
             <RoleSection />
             <ContactSection/>
-
+            <Footer />
             {/* ... other sections go here ... */}
 
         </div>
