@@ -2,10 +2,10 @@ import React from 'react';
 import CardNav from './components/CardNav/CardNav';
 import Hero from './components/Hero/Hero';
 import AboutSection from './components/AboutSection/AboutSection';
-import FeatureSection from './components/FeatureSection/FeatureSection';
-import RoleSection from './components/RoleSection/RoleSection';
-import ContactSection from './components/ContactSection/ContactSection';
-import Footer from './components/Footer/Footer';
+import FeatureSection from './components/FeatureSection/FeatureSection'; // Renamed component
+import RoleSection from './components/RoleSection/RoleSection';       // New component
+import ContactSection from './components/ContactSection/ContactSection'; // New component
+import Footer from './components/Footer/Footer';                     // New component
 import './index.css';
 
 function App() {
@@ -76,7 +76,7 @@ function App() {
         },
         background: "gradient",
         backgroundProps: {
-            // ✅ UPDATED: Setting gradient start and end to #1e293b for a solid color
+            // ✅ Solid dark background matching the footer
             gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
             color: "#1e293b"
         },
@@ -94,14 +94,15 @@ function App() {
                 buttonTextColor="#ffffff"
             />
 
+            {/* Main Sections */}
             <Hero {...heroProps} />
-
             <AboutSection />
             <FeatureSection />
             <RoleSection />
-            <ContactSection/>
+            <ContactSection />
+
+            {/* Footer */}
             <Footer />
-            {/* ... other sections go here ... */}
 
         </div>
     )
