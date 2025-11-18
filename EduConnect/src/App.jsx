@@ -4,6 +4,7 @@ import Hero from './components/Hero/Hero';
 import AboutSection from './components/AboutSection/AboutSection';
 import FeatureSection from './components/FeatureSection/FeatureSection';
 import RoleSection from './components/RoleSection/RoleSection';
+import ContactSection from './components/ContactSection/ContactSection';
 import './index.css';
 
 function App() {
@@ -97,6 +98,8 @@ function App() {
             <AboutSection />
             <FeatureSection />
             <RoleSection />
+            <ContactSection/>
+            
             {/* ... other sections go here ... */}
 
         </div>
