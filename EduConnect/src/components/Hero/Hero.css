@@ -5,32 +5,29 @@
     align-items: center;
     justify-content: center;
     padding: 80px 20px;
-    /* Changed text color from white to dark blue/slate */
     color: #1e293b;
 }
 
 .hero-container {
-    /* Set a wide max-width for the grid container */
     max-width: 1200px;
     width: 100%;
     z-index: 2;
 }
 
-/* 💡 RE-INTRODUCED: GRID CONTAINER FOR CONTENT & VISUALS */
+/* 💡 GRID CONTAINER */
 .hero-content-grid {
     display: grid;
-    /* Two-column layout: 1.2 parts for text, 1 part for visual */
     grid-template-columns: 1.2fr 1fr;
-    gap: 60px; /* Increased gap for separation */
-    align-items: center; /* Vertically align items in the center */
+    gap: 60px;
+    align-items: center;
     text-align: left;
+    margin-top: 50px;
 }
 
 /* --- LEFT COLUMN: TEXT CONTENT --- */
 .hero-text-content {
-    /* Reset text alignment for two-column layout */
     text-align: left;
-    padding-right: 0; /* Remove padding */
+    padding-right: 0;
 }
 
 /* 🖋️ TITLE STYLES */
@@ -53,8 +50,8 @@
     line-height: 1.6;
     opacity: 0.9;
     max-width: none;
-    margin-left: 0; /* Align left */
-    margin-right: 0; /* Align left */
+    margin-left: 0;
+    margin-right: 0;
     overflow: visible;
     display: block;
 }
@@ -73,7 +70,7 @@
     gap: 16px;
     margin-top: 32px;
     flex-wrap: wrap;
-    justify-content: flex-start; /* Align buttons to the left */
+    justify-content: flex-start;
 }
 
 /* --- RIGHT COLUMN: LOGO AND FEATURES --- */
@@ -82,120 +79,163 @@
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* Added to contain absolutely positioned features */
     position: relative;
+    margin-top: 90px;
 }
 
 .logo-feature-wrapper {
     position: relative;
-    width: 380px; /* Container size for the entire circular arrangement */
+    width: 380px;
     height: 380px;
     display: flex;
     justify-content: center;
     align-items: center;
+
+    /* 💡 Applied floating animation to the entire wrapper */
+    animation: float 6s ease-in-out infinite;
 }
 
 .hero-logo {
-    max-width: 65%; /* Size of the logo relative to its wrapper */
+    max-width: 65%;
     height: auto;
     display: block;
-    z-index: 10; /* Ensure logo is on top of circles */
+    z-index: 10;
 }
 
-/* Feature Circles (Matching Card Color) */
+/* Feature Circles (Base Styles) */
 .feature-circle {
-    /* 💡 IMPORTANT: REPLACE THIS WITH YOUR NAV CARD COLOR */
-    --card-color: #3f68a7;
-
     position: absolute;
-    width: 130px; /* Size of each feature circle */
-    height: 130px;
-    background-color: var(--card-color);
+    width: 105px;
+    height: 105px;
     border-radius: 50%;
     display: flex;
-    flex-direction: column;
+    flex-direction: column; /* Keep as column to center icon */
     justify-content: center;
     align-items: center;
     text-align: center;
+    /* Font size for the icon (removed text-specific font sizes) */
     font-size: 0.9rem;
     padding: 10px;
     box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
-    color: white; /* Ensure text is visible on the colored background */
+    color: #333;
+    border: 1px solid rgba(0,0,0,0.1);
     z-index: 5;
-
-    /* Variables for positioning: --i=index, --total=total count */
-    /* Rotate the entire circle, translate it away from the center (radius),
-       then counter-rotate the content to keep text upright */
-    transform:
-            rotate(calc(var(--i) * (360deg / var(--total))))
-            translate(190px) /* 💡 This value controls the radius of the feature circle arrangement */
-            rotate(calc(var(--i) * (-360deg / var(--total))));
-
     transition: all 0.3s ease-in-out;
 }
 
+/* 💡 Hardcoded Colors (from card backgrounds) and Positions */
+/* 1. Home Card Color: #f0f9ff (0 degrees) */
+.logo-feature-wrapper .feature-circle:nth-child(2) {
+    background-color: #f0f9ff;
+    transform: rotate(0deg) translate(190px) rotate(0deg);
+}
+
+/* 2. About Card Color: #fef7cd (72 degrees) */
+.logo-feature-wrapper .feature-circle:nth-child(3) {
+    background-color: #fef7cd;
+    transform: rotate(72deg) translate(190px) rotate(-72deg);
+}
+
+/* 3. Features Card Color: #f3e8ff (144 degrees) */
+.logo-feature-wrapper .feature-circle:nth-child(4) {
+    background-color: #f3e8ff;
+    transform: rotate(144deg) translate(190px) rotate(-144deg);
+}
+
+/* 4. Roles Card Color: #dcfce7 (216 degrees) */
+.logo-feature-wrapper .feature-circle:nth-child(5) {
+    background-color: #dcfce7;
+    transform: rotate(216deg) translate(190px) rotate(-216deg);
+}
+
+/* 5. Contact Card Color: #ffe4e6 (288 degrees) */
+.logo-feature-wrapper .feature-circle:nth-child(6) {
+    background-color: #ffe4e6;
+    transform: rotate(288deg) translate(190px) rotate(-288deg);
+}
+
+/* Hover Effect for all circles */
 .feature-circle:hover {
     box-shadow: 0 5px 25px rgba(0, 0, 0, 0.4);
-    transform:
-            rotate(calc(var(--i) * (360deg / var(--total))))
-            translate(200px) /* Slight pull-out on hover */
-            rotate(calc(var(--i) * (-360deg / var(--total))))
-            scale(1.05);
 }
+
+/* Specific Hover Transforms */
+.logo-feature-wrapper .feature-circle:nth-child(2):hover { transform: rotate(0deg) translate(200px) rotate(0deg) scale(1.05); }
+.logo-feature-wrapper .feature-circle:nth-child(3):hover { transform: rotate(72deg) translate(200px) rotate(-72deg) scale(1.05); }
+.logo-feature-wrapper .feature-circle:nth-child(4):hover { transform: rotate(144deg) translate(200px) rotate(-144deg) scale(1.05); }
+.logo-feature-wrapper .feature-circle:nth-child(5):hover { transform: rotate(216deg) translate(200px) rotate(-216deg) scale(1.05); }
+.logo-feature-wrapper .feature-circle:nth-child(6):hover { transform: rotate(288deg) translate(200px) rotate(-288deg) scale(1.05); }
+
 
 .feature-icon {
-    font-size: 2rem;
-    margin-bottom: 5px;
+    font-size: 2.2rem; /* Slightly larger icon since no text */
+    /* margin-bottom: 5px; /* Removed as no text below */
 }
 
-.feature-name {
+/* Removed: .feature-name styles as text is no longer present */
+/* .feature-name {
     font-weight: 600;
     line-height: 1.2;
+} */
+
+/* 💡 Keyframes for a gentle floating animation */
+@keyframes float {
+    0% { transform: translateY(0px); }
+    50% { transform: translateY(-15px); } /* Floats up 15px */
+    100% { transform: translateY(0px); }
 }
 
 
 /* 📱 Responsive design */
 @media (max-width: 992px) {
     .hero-content-grid {
-        /* Stack columns vertically on smaller screens */
         grid-template-columns: 1fr;
         gap: 40px;
+        margin-top: 30px;
     }
 
     .hero-text-content {
-        /* Center content when stacked */
         text-align: center;
     }
 
     .hero-buttons {
-        /* Center buttons when stacked */
         justify-content: center;
     }
 
     .hero-visual-content {
-        /* Push visual content down for better flow */
         order: 1;
         margin-top: 40px;
     }
 
-    /* Adjust visual element size for smaller screens */
     .logo-feature-wrapper {
         width: 300px;
         height: 300px;
+        /* Adjust float animation for smaller size */
+        animation: float 5s ease-in-out infinite;
     }
 
-    .feature-circle {
+    .logo-feature-wrapper .feature-circle:nth-child(n+2) {
         width: 100px;
         height: 100px;
         font-size: 0.8rem;
-        transform:
-                rotate(calc(var(--i) * (360deg / var(--total))))
-                translate(150px) /* Smaller radius */
-                rotate(calc(var(--i) * (-360deg / var(--total))));
+        transform: initial;
     }
 
+    .logo-feature-wrapper .feature-circle:nth-child(2) { transform: rotate(0deg) translate(150px) rotate(0deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(3) { transform: rotate(72deg) translate(150px) rotate(-72deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(4) { transform: rotate(144deg) translate(150px) rotate(-144deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(5) { transform: rotate(216deg) translate(150px) rotate(-216deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(6) { transform: rotate(288deg) translate(150px) rotate(-288deg); }
+
+    .logo-feature-wrapper .feature-circle:nth-child(2):hover { transform: rotate(0deg) translate(160px) rotate(0deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(3):hover { transform: rotate(72deg) translate(160px) rotate(-72deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(4):hover { transform: rotate(144deg) translate(160px) rotate(-144deg) scale(1.05); }
+    .logo-feature-wrapper .feature-child:nth-child(5):hover { transform: rotate(216deg) translate(160px) rotate(-216deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(6):hover { transform: rotate(288deg) translate(160px) rotate(-288deg) scale(1.05); }
+
+
     .feature-icon {
-        font-size: 1.5rem;
+        font-size: 1.8rem;
     }
 
     .hero-title {
@@ -224,15 +264,25 @@
     .logo-feature-wrapper {
         width: 250px;
         height: 250px;
+        animation: float 4s ease-in-out infinite; /* Faster float for smaller screens */
     }
 
-    .feature-circle {
+    .logo-feature-wrapper .feature-circle:nth-child(n+2) {
         width: 80px;
         height: 80px;
         font-size: 0.7rem;
-        transform:
-                rotate(calc(var(--i) * (360deg / var(--total))))
-                translate(120px) /* Even smaller radius */
-                rotate(calc(var(--i) * (-360deg / var(--total))));
+        transform: initial;
     }
+
+    .logo-feature-wrapper .feature-circle:nth-child(2) { transform: rotate(0deg) translate(120px) rotate(0deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(3) { transform: rotate(72deg) translate(120px) rotate(-72deg); }
+    .logo-feature-wrapper .feature-child:nth-child(4) { transform: rotate(144deg) translate(120px) rotate(-144deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(5) { transform: rotate(216deg) translate(120px) rotate(-216deg); }
+    .logo-feature-wrapper .feature-circle:nth-child(6) { transform: rotate(288deg) translate(120px) rotate(-288deg); }
+
+    .logo-feature-wrapper .feature-circle:nth-child(2):hover { transform: rotate(0deg) translate(130px) rotate(0deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(3):hover { transform: rotate(72deg) translate(130px) rotate(-72deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(4):hover { transform: rotate(144deg) translate(130px) rotate(-144deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(5):hover { transform: rotate(216deg) translate(130px) rotate(-216deg) scale(1.05); }
+    .logo-feature-wrapper .feature-circle:nth-child(6):hover { transform: rotate(288deg) translate(130px) rotate(-288deg) scale(1.05); }
 }

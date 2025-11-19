@@ -1,15 +1,14 @@
 import React from 'react';
 import DecryptedText from '../DecryptedText/DecryptedText';
 import './Hero.css';
-// 💡 Assuming your logo is named educonnect_logo.png and is in the public folder or correctly imported
-import educonnectLogo from './educonnect_logo.png';
+import educonnectLogo from '../../assets/educonnectLogo/educonnect_logo.png';
 
 const Hero = ({
                   title,
                   subtitle,
                   background = "gradient",
                   backgroundProps = {
-                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)", // Using the solid color from App.jsx
+                      gradient: "linear-gradient(135deg, #1e293b 0%, #1e293b 100%)",
                       color: "#1e293b"
                   },
                   primaryButton = {
@@ -18,7 +17,7 @@ const Hero = ({
                   },
                   secondaryButton = {
                       text: "Explore Courses",
-                      onClick: () => console.log("Secondary button clicked")
+                      onClick: () => console.log("Secondary Courses clicked")
                   },
                   className = ""
               }) => {
@@ -26,7 +25,6 @@ const Hero = ({
     const getBackgroundStyle = () => {
         switch (background) {
             case 'gradient':
-                // Check App.jsx heroProps for the current gradient
                 return { background: backgroundProps.gradient };
             case 'solid':
                 return { backgroundColor: backgroundProps.color };
@@ -41,13 +39,13 @@ const Hero = ({
         }
     };
 
-    // Placeholder data for features - replace with your actual features
+    // Placeholder data for 5 key features (5 circles total)
     const features = [
-        { name: "Live Classes", icon: "📚" },
-        { name: "Quizzes & Tests", icon: "📝" },
-        { name: "Certificates", icon: "🏆" },
-        { name: "Student Community", icon: "🤝" },
-        { name: "Progress Tracking", icon: "📈" }
+        { name: "Schools & Admissions", icon: "🏫" }, // 0
+        { name: "Jobs & Careers", icon: "💼" },       // 1
+        { name: "Educational Services", icon: "🌐" }, // 2
+        { name: "Unified Platform", icon: "🔗" },    // 3
+        { name: "Parent & Teacher Connect", icon: "👪" } // 4
     ];
 
     return (
@@ -57,7 +55,6 @@ const Hero = ({
             style={getBackgroundStyle()}
         >
             <div className="hero-container">
-                {/* 💡 RE-INTRODUCED: Flex/Grid container for two columns */}
                 <div className="hero-content-grid">
 
                     {/* Left Column: Text Content */}
@@ -104,18 +101,16 @@ const Hero = ({
                     {/* Right Column: Logo and Features */}
                     <div className="hero-visual-content">
                         <div className="logo-feature-wrapper">
-                            {/* The logo image is placed here */}
                             <img src={educonnectLogo} alt="EduConnect Portal Logo" className="hero-logo" />
 
-                            {/* Feature Circles */}
+                            {/* Feature Circles: Text removed */}
                             {features.map((feature, index) => (
                                 <div
                                     key={index}
                                     className="feature-circle"
-                                    style={{ '--i': index, '--total': features.length }}
                                 >
                                     <span className="feature-icon">{feature.icon}</span>
-                                    <span className="feature-name">{feature.name}</span>
+                                    {/* Removed: <span className="feature-name">{feature.name}</span> */}
                                 </div>
                             ))}
                         </div>
