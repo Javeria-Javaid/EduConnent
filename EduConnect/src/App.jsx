@@ -1,4 +1,5 @@
 import React from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import CardNav from './components/CardNav/CardNav';
 import Hero from './components/Hero/Hero';
 import AboutSection from './components/AboutSection/AboutSection';
