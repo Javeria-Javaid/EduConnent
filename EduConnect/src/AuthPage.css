@@ -303,6 +303,16 @@
     text-decoration: underline;
 }
 
+/* Add this block anywhere in AuthPage.css */
+.login-error-message {
+    color: #ff6b6b; /* Bright red color for errors */
+    font-size: 14px;
+    margin-top: -10px;
+    margin-bottom: 10px;
+    text-align: center;
+    font-weight: 500;
+}
+
 /* Common Footer Links (Switching views) */
 .login-link-text, .signup-link-text {
     font-size: 14px;

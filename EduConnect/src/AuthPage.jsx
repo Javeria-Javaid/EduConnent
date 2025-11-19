@@ -40,7 +40,7 @@ const AuthPage = () => {
             navigate('/admin/dashboard');
         } else {
             // Display an error message
-            setLoginError('Invalid email or password. Use admin@educonnect.com / password123');
+            setLoginError('Invalid email or password.');
         }
     };
     // --- END LOGIN SUBMISSION HANDLER ---
