@@ -2,19 +2,19 @@ import React from 'react';
 import CardNav from './components/CardNav/CardNav';
 import Hero from './components/Hero/Hero';
 import AboutSection from './components/AboutSection/AboutSection';
-import FeatureSection from './components/FeatureSection/FeatureSection'; // Renamed component
-import RoleSection from './components/RoleSection/RoleSection';       // New component
-import ContactSection from './components/ContactSection/ContactSection'; // New component
-import Footer from './components/Footer/Footer';                     // New component
+import FeatureSection from './components/FeatureSection/FeatureSection';
+import RoleSection from './components/RoleSection/RoleSection';
+import ContactSection from './components/ContactSection/ContactSection';
+import Footer from './components/Footer/Footer';
 import './index.css';
 
 function App() {
-    // Nav Items Data (unchanged)
+    // Nav Items Data - LIGHT/CONTRASTING colors for the dropdown cards
     const navItems = [
         {
             label: "Home",
-            bgColor: "#f0f9ff",
-            textColor: "#0369a1",
+            bgColor: "#f0f9ff", // Light Blue
+            textColor: "#0369a1", // Dark Blue Text
             links: [
                 { label: "Welcome", href: "#home", ariaLabel: "Welcome to EduConnect" },
                 { label: "Get Started", href: "#get-started", ariaLabel: "Get started with EduConnect" },
@@ -23,8 +23,8 @@ function App() {
         },
         {
             label: "About",
-            bgColor: "#fef7cd",
-            textColor: "#854d0e",
+            bgColor: "#fef7cd", // Light Yellow
+            textColor: "#854d0e", // Dark Brown Text
             links: [
                 { label: "Our Story", href: "#about", ariaLabel: "Learn our story" },
                 { label: "Mission & Vision", href: "#mission", ariaLabel: "Our mission and vision" },
@@ -33,8 +33,8 @@ function App() {
         },
         {
             label: "Features",
-            bgColor: "#f3e8ff",
-            textColor: "#7e22ce",
+            bgColor: "#f3e8ff", // Light Purple
+            textColor: "#7e22ce", // Dark Purple Text
             links: [
                 { label: "Learning Tools", href: "#features", ariaLabel: "Learning tools and features" },
                 { label: "Interactive Content", href: "#interactive", ariaLabel: "Interactive learning content" },
@@ -43,8 +43,8 @@ function App() {
         },
         {
             label: "Roles",
-            bgColor: "#dcfce7",
-            textColor: "#166534",
+            bgColor: "#dcfce7", // Light Green
+            textColor: "#166534", // Dark Green Text
             links: [
                 { label: "For Students", href: "#students", ariaLabel: "Features for students" },
                 { label: "For Educators", href: "#educators", ariaLabel: "Features for educators" },
@@ -54,8 +54,8 @@ function App() {
         ,
         {
             label: "Contact",
-            bgColor: "#ffe4e6",
-            textColor: "#be123c",
+            bgColor: "#ffe4e6", // Light Red/Pink
+            textColor: "#be123c", // Dark Red Text
             links: [
                 { label: "Get in Touch", href: "#contact", ariaLabel: "Contact us" },
                 { label: "Support", href: "#support", ariaLabel: "Get support" },
@@ -75,9 +75,8 @@ function App() {
             text: "Explore Features",
             onClick: () => console.log("Explore Features clicked")
         },
-        background: "solid", // Changed to 'solid'
+        background: "solid",
         backgroundProps: {
-            // ✅ Setting background to white to meet new design requirement
             gradient: "linear-gradient(135deg, #ffffff 0%, #ffffff 100%)",
             color: "#ffffff"
         },
@@ -87,10 +86,12 @@ function App() {
     return (
         <div className="App">
             <CardNav
-                logo="/educonnect_logo.png"
+                // Using a white logo for the dark background
+                logo="/image_59bd60.png"
                 logoAlt="EduConnect"
                 items={navItems}
-                baseColor="#ffffff"
+                // SETTING THE MAIN NAV BAR TO DARK BLUE
+                baseColor="#1e293b"
                 buttonBgColor="#66a1be"
                 buttonTextColor="#ffffff"
             />

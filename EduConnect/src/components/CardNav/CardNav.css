@@ -13,6 +13,7 @@
     display: block;
     height: 70px;
     padding: 0;
+    /* Base Nav Bar remains white/light */
     background-color: #ffffff;
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
@@ -154,11 +155,20 @@
     gap: 8px;
     user-select: none;
     transition: all 0.3s ease;
+
+    /* 💡 Default link/icon color for dark card backgrounds */
+    --link-icon-color: #a1abb8;
+    /* Use the original link/icon color for hover effect (using the old light theme colors) */
+    --home-hover-color: #4c9ebb; /* Adjusted from #0369a1 to fit better on dark blue */
+    --about-hover-color: #ffda79; /* Adjusted from #854d0e to fit better on dark blue */
+    --features-hover-color: #a78bfa; /* Adjusted from #7e22ce to fit better on dark blue */
+    --roles-hover-color: #86efac; /* Adjusted from #166534 to fit better on dark blue */
+    --contact-hover-color: #fca5a5; /* Adjusted from #be123c to fit better on dark blue */
 }
 
 .nav-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Darker shadow for dark background */
 }
 
 .nav-card-label {
@@ -184,18 +194,71 @@
     align-items: center;
     gap: 4px;
     padding: 3px 0;
-    color: inherit;
+    /* Set default link color to light grey/white for visibility on dark background */
+    color: var(--link-icon-color);
 }
 
+/* Base icon styling for dark cards */
+.nav-card-link-icon {
+    font-size: 11px;
+    color: var(--link-icon-color);
+    opacity: 1; /* Keep icon visible */
+    transition: all 0.3s ease;
+}
+
+/* Link Hover/Active Styling */
 .nav-card-link:hover {
-    opacity: 0.8;
+    opacity: 1;
     transform: translateX(3px);
 }
 
-.nav-card-link-icon {
-    font-size: 11px;
-    opacity: 0.7;
+/* New Logic: Apply the original vibrant color only on link hover/focus */
+
+/* Home Link Hover */
+.nav-card:nth-child(1) .nav-card-link:hover,
+.nav-card:nth-child(1) .nav-card-link:focus {
+    color: var(--home-hover-color);
 }
+.nav-card:nth-child(1) .nav-card-link:hover .nav-card-link-icon {
+    color: var(--home-hover-color);
+}
+
+/* About Link Hover */
+.nav-card:nth-child(2) .nav-card-link:hover,
+.nav-card:nth-child(2) .nav-card-link:focus {
+    color: var(--about-hover-color);
+}
+.nav-card:nth-child(2) .nav-card-link:hover .nav-card-link-icon {
+    color: var(--about-hover-color);
+}
+
+/* Features Link Hover */
+.nav-card:nth-child(3) .nav-card-link:hover,
+.nav-card:nth-child(3) .nav-card-link:focus {
+    color: var(--features-hover-color);
+}
+.nav-card:nth-child(3) .nav-card-link:hover .nav-card-link-icon {
+    color: var(--features-hover-color);
+}
+
+/* Roles Link Hover */
+.nav-card:nth-child(4) .nav-card-link:hover,
+.nav-card:nth-child(4) .nav-card-link:focus {
+    color: var(--roles-hover-color);
+}
+.nav-card:nth-child(4) .nav-card-link:hover .nav-card-link-icon {
+    color: var(--roles-hover-color);
+}
+
+/* Contact Link Hover */
+.nav-card:nth-child(5) .nav-card-link:hover,
+.nav-card:nth-child(5) .nav-card-link:focus {
+    color: var(--contact-hover-color);
+}
+.nav-card:nth-child(5) .nav-card-link:hover .nav-card-link-icon {
+    color: var(--contact-hover-color);
+}
+
 
 /* Tablet adjustments for 5 items */
 @media (max-width: 1024px) {
@@ -232,7 +295,7 @@
         /* Default height for closed state */
     }
 
-    /* 💡 CRUCIAL FIX: Make the main navigation container (CardNav) expand when open */
+    /* CRUCIAL FIX: Make the main navigation container (CardNav) expand when open */
     .card-nav.open {
         height: 90vh !important;
         max-height: 90vh;
@@ -301,9 +364,15 @@
     .nav-card-link {
         font-size: 13px;
         padding: 4px 8px;
-        background: rgba(255, 255, 255, 0.3);
+        /* Light background for links in mobile view for better contrast */
+        background: rgba(255, 255, 255, 0.1);
         border-radius: 4px;
         border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--link-icon-color); /* Light color on dark card */
+    }
+
+    .nav-card-link-icon {
+        color: var(--link-icon-color);
     }
 }
 
@@ -354,8 +423,8 @@
     }
 
     .nav-card-link {
-        font-size: 12px;
-        padding: 3px 6px;
+        font-size: 11px;
+        padding: 2px 4px;
     }
 }
 
@@ -402,31 +471,10 @@
 }
 
 .card-nav-content::-webkit-scrollbar-thumb {
-    background: rgba(0, 0, 0, 0.3);
+    background: rgba(255, 255, 255, 0.3); /* Lighter scrollbar for dark backgrounds */
     border-radius: 2px;
 }
 
 .card-nav-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(0, 0, 0, 0.5);
-}
-
-/* Ensure proper card colors for different sections */
-.nav-card[style*="background-color: #f0f9ff"] .nav-card-link {
-    color: #0369a1;
-}
-
-.nav-card[style*="background-color: #fef7cd"] .nav-card-link {
-    color: #854d0e;
-}
-
-.nav-card[style*="background-color: #f3e8ff"] .nav-card-link {
-    color: #7e22ce;
-}
-
-.nav-card[style*="background-color: #dcfce7"] .nav-card-link {
-    color: #166534;
-}
-
-.nav-card[style*="background-color: #ffe4e6"] .nav-card-link {
-    color: #be123c;
+    background: rgba(255, 255, 255, 0.5);
 }

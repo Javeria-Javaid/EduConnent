@@ -9,9 +9,9 @@ const CardNav = ({
                      items,
                      className = '',
                      ease = 'power3.out',
-                     baseColor = '#fff',
+                     baseColor = '#1e293b',
                      menuColor,
-                     buttonBgColor = '#1e293b', // Updated default color
+                     buttonBgColor = '#66a1be',
                      buttonTextColor = '#ffffff',
                      platformName = 'EduConnect'
                  }) => {
@@ -147,7 +147,7 @@ const CardNav = ({
                         role="button"
                         aria-label={isExpanded ? 'Close menu' : 'Open menu'}
                         tabIndex={0}
-                        style={{ color: menuColor || '#000' }}
+                        style={{ color: menuColor }}
                     >
                         <div className="hamburger-line" />
                         <div className="hamburger-line" />
