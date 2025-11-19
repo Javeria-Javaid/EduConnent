@@ -1,3 +1,4 @@
+/* --- General Container and Nav Bar --- */
 .card-nav-container {
     position: absolute;
     top: 2em;
@@ -13,11 +14,10 @@
     display: block;
     height: 70px;
     padding: 0;
-    /* Base Nav Bar remains white/light */
-    background-color: #ffffff;
+    /* baseColor prop sets the dark blue background (#1e293b) */
     border: 0.5px solid rgba(255, 255, 255, 0.1);
     border-radius: 0.75rem;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
     position: relative;
     overflow: hidden;
     will-change: height;
@@ -36,6 +36,7 @@
     z-index: 2;
 }
 
+/* --- Hamburger Menu (White for dark background) --- */
 .hamburger-menu {
     height: 100%;
     display: flex;
@@ -44,7 +45,7 @@
     justify-content: center;
     cursor: pointer;
     gap: 6px;
-    color: #1e293b;
+    color: #ffffff;
 }
 
 .hamburger-menu:hover .hamburger-line {
@@ -70,7 +71,7 @@
     transform: translateY(-4px) rotate(-45deg);
 }
 
-/* Logo Container with Platform Name */
+/* --- Logo and Brand Name (Restored original style with light gradient) --- */
 .logo-container {
     display: flex;
     align-items: center;
@@ -88,7 +89,8 @@
 .platform-name {
     font-size: 1.45rem;
     font-weight: 300;
-    background: linear-gradient(135deg, #4c9ebb, #1e293b);
+    /* Light gradient for high contrast on the dark background */
+    background: linear-gradient(135deg, #a5f3fc, #ffffff);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
     background-clip: text;
@@ -98,8 +100,9 @@
     text-transform: uppercase;
 }
 
+/* --- CTA Button --- */
 .card-nav-cta-button {
-    background-color: #66a1be; /* Updated color */
+    background-color: #66a1be;
     color: white;
     border: none;
     border-radius: calc(0.75rem - 0.35rem);
@@ -113,12 +116,12 @@
 }
 
 .card-nav-cta-button:hover {
-    background-color: #374151; /* Darker shade for hover */
+    background-color: #4b8ba8;
     transform: translateY(-1px);
     box-shadow: 0 4px 12px rgba(30, 41, 59, 0.3);
 }
 
-/* Card Content Area - Optimized for 5 items */
+/* --- Card Content Area (The Dropdown) --- */
 .card-nav-content {
     position: absolute;
     left: 0;
@@ -141,7 +144,7 @@
     pointer-events: auto;
 }
 
-/* Nav Cards - Perfect for 5 items */
+/* --- Individual Dropdown Cards --- */
 .nav-card {
     height: 100%;
     flex: 1 1 0;
@@ -156,19 +159,20 @@
     user-select: none;
     transition: all 0.3s ease;
 
-    /* 💡 Default link/icon color for dark card backgrounds */
-    --link-icon-color: #a1abb8;
-    /* Use the original link/icon color for hover effect (using the old light theme colors) */
-    --home-hover-color: #4c9ebb; /* Adjusted from #0369a1 to fit better on dark blue */
-    --about-hover-color: #ffda79; /* Adjusted from #854d0e to fit better on dark blue */
-    --features-hover-color: #a78bfa; /* Adjusted from #7e22ce to fit better on dark blue */
-    --roles-hover-color: #86efac; /* Adjusted from #166534 to fit better on dark blue */
-    --contact-hover-color: #fca5a5; /* Adjusted from #be123c to fit better on dark blue */
+    /* Default dark link/icon color for visibility on the light card backgrounds */
+    --link-icon-color: #4b5563;
+
+    /* Defined colors for link hover effects */
+    --home-hover-color: #0369a1;
+    --about-hover-color: #854d0e;
+    --features-hover-color: #7e22ce;
+    --roles-hover-color: #166534;
+    --contact-hover-color: #be123c;
 }
 
 .nav-card:hover {
     transform: translateY(-3px);
-    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.5); /* Darker shadow for dark background */
+    box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
 }
 
 .nav-card-label {
@@ -194,138 +198,65 @@
     align-items: center;
     gap: 4px;
     padding: 3px 0;
-    /* Set default link color to light grey/white for visibility on dark background */
     color: var(--link-icon-color);
 }
 
-/* Base icon styling for dark cards */
 .nav-card-link-icon {
     font-size: 11px;
     color: var(--link-icon-color);
-    opacity: 1; /* Keep icon visible */
+    opacity: 1;
     transition: all 0.3s ease;
 }
 
-/* Link Hover/Active Styling */
 .nav-card-link:hover {
     opacity: 1;
     transform: translateX(3px);
 }
 
-/* New Logic: Apply the original vibrant color only on link hover/focus */
-
-/* Home Link Hover */
+/* Dynamic Hover Color Logic */
 .nav-card:nth-child(1) .nav-card-link:hover,
-.nav-card:nth-child(1) .nav-card-link:focus {
-    color: var(--home-hover-color);
-}
-.nav-card:nth-child(1) .nav-card-link:hover .nav-card-link-icon {
-    color: var(--home-hover-color);
-}
+.nav-card:nth-child(1) .nav-card-link:focus { color: var(--home-hover-color); }
+.nav-card:nth-child(1) .nav-card-link:hover .nav-card-link-icon { color: var(--home-hover-color); }
 
-/* About Link Hover */
 .nav-card:nth-child(2) .nav-card-link:hover,
-.nav-card:nth-child(2) .nav-card-link:focus {
-    color: var(--about-hover-color);
-}
-.nav-card:nth-child(2) .nav-card-link:hover .nav-card-link-icon {
-    color: var(--about-hover-color);
-}
+.nav-card:nth-child(2) .nav-card-link:focus { color: var(--about-hover-color); }
+.nav-card:nth-child(2) .nav-card-link:hover .nav-card-link-icon { color: var(--about-hover-color); }
 
-/* Features Link Hover */
 .nav-card:nth-child(3) .nav-card-link:hover,
-.nav-card:nth-child(3) .nav-card-link:focus {
-    color: var(--features-hover-color);
-}
-.nav-card:nth-child(3) .nav-card-link:hover .nav-card-link-icon {
-    color: var(--features-hover-color);
-}
+.nav-card:nth-child(3) .nav-card-link:focus { color: var(--features-hover-color); }
+.nav-card:nth-child(3) .nav-card-link:hover .nav-card-link-icon { color: var(--features-hover-color); }
 
-/* Roles Link Hover */
 .nav-card:nth-child(4) .nav-card-link:hover,
-.nav-card:nth-child(4) .nav-card-link:focus {
-    color: var(--roles-hover-color);
-}
-.nav-card:nth-child(4) .nav-card-link:hover .nav-card-link-icon {
-    color: var(--roles-hover-color);
-}
+.nav-card:nth-child(4) .nav-card-link:focus { color: var(--roles-hover-color); }
+.nav-card:nth-child(4) .nav-card-link:hover .nav-card-link-icon { color: var(--roles-hover-color); }
 
-/* Contact Link Hover */
 .nav-card:nth-child(5) .nav-card-link:hover,
-.nav-card:nth-child(5) .nav-card-link:focus {
-    color: var(--contact-hover-color);
-}
-.nav-card:nth-child(5) .nav-card-link:hover .nav-card-link-icon {
-    color: var(--contact-hover-color);
-}
+.nav-card:nth-child(5) .nav-card-link:focus { color: var(--contact-hover-color); }
+.nav-card:nth-child(5) .nav-card-link:hover .nav-card-link-icon { color: var(--contact-hover-color); }
 
 
-/* Tablet adjustments for 5 items */
+/* --- Responsive Adjustments --- */
 @media (max-width: 1024px) {
-    .nav-card {
-        min-width: 160px;
-        max-width: 180px;
-        padding: 10px 12px;
-    }
-
-    .nav-card-label {
-        font-size: 17px;
-    }
-
-    .nav-card-link {
-        font-size: 12px;
-    }
+    .nav-card { min-width: 160px; max-width: 180px; padding: 10px 12px; }
+    .nav-card-label { font-size: 17px; }
+    .nav-card-link { font-size: 12px; }
 }
 
-/* Mobile adjustments */
 @media (max-width: 768px) {
-    .card-nav-container {
-        width: 95%;
-        top: 1.2em;
-    }
+    .card-nav-top { height: 65px; }
+    .card-nav { height: 65px; }
 
-    .card-nav-top {
-        padding: 0.5rem 1rem;
-        justify-content: space-between;
-        height: 65px;
-    }
-
-    .card-nav {
-        height: 65px;
-        /* Default height for closed state */
-    }
-
-    /* CRUCIAL FIX: Make the main navigation container (CardNav) expand when open */
+    /* CRUCIAL FIX: Force height auto to allow mobile scrolling when expanded */
     .card-nav.open {
-        height: 90vh !important;
+        height: auto !important;
         max-height: 90vh;
-        /* Allow the entire opened nav panel to scroll if needed */
         overflow-y: auto;
     }
 
-    .hamburger-menu {
-        order: 2;
-    }
-
-    .logo-container {
-        position: static;
-        transform: none;
-        order: 1;
-        gap: 0.5rem;
-    }
-
-    .platform-name {
-        font-size: 1.2rem;
-        letter-spacing: 1.5px;
-    }
-
-    .logo {
-        height: 28px;
-    }
-
-    .card-nav-cta-button {
-        display: none;
-    }
+    .logo-container { position: static; transform: none; order: 1; gap: 0.5rem; }
+    .platform-name { font-size: 1.2rem; letter-spacing: 1.5px; }
+    .logo { height: 28px; }
+    .card-nav-cta-button { display: none; }
 
     .card-nav-content {
         top: 65px;
@@ -333,11 +264,7 @@
         align-items: stretch;
         gap: 6px;
         padding: 0.75rem;
-        bottom: 0;
-        justify-content: flex-start;
-        /* max-height is now controlled by .card-nav.open */
-        max-height: none;
-        padding-bottom: 30px; /* Add extra space for bottom CTA area */
+        padding-bottom: 30px;
     }
 
     .nav-card {
@@ -349,110 +276,24 @@
         padding: 12px 16px;
     }
 
-    .nav-card-label {
-        font-size: 17px;
-        margin-bottom: 6px;
-    }
-
-    .nav-card-links {
-        flex-direction: row;
-        flex-wrap: wrap;
-        gap: 8px;
-        margin-top: 8px;
-    }
-
-    .nav-card-link {
-        font-size: 13px;
-        padding: 4px 8px;
-        /* Light background for links in mobile view for better contrast */
-        background: rgba(255, 255, 255, 0.1);
-        border-radius: 4px;
-        border: 1px solid rgba(255, 255, 255, 0.2);
-        color: var(--link-icon-color); /* Light color on dark card */
-    }
-
-    .nav-card-link-icon {
-        color: var(--link-icon-color);
-    }
+    .nav-card-label { margin-bottom: 6px; }
+    .nav-card-links { flex-direction: row; flex-wrap: wrap; gap: 8px; margin-top: 8px; }
+    .nav-card-link { font-size: 13px; padding: 4px 8px; }
 }
 
-/* Small mobile adjustments */
 @media (max-width: 480px) {
-    .card-nav.open {
-        height: 90vh !important;
-        max-height: 90vh;
-        overflow-y: auto;
-    }
-
-    .platform-name {
-        font-size: 1.1rem;
-        letter-spacing: 1px;
-    }
-
-    .logo {
-        height: 26px;
-    }
-
-    .card-nav-top {
-        height: 60px;
-        padding: 0.5rem 0.8rem;
-    }
-
-    .card-nav {
-        height: 60px;
-    }
-
-    .card-nav-content {
-        top: 60px;
-        padding: 0.5rem;
-        gap: 5px;
-        max-height: none; /* Controlled by .card-nav.open */
-    }
-
-    .nav-card {
-        min-height: 65px;
-        padding: 10px 12px;
-    }
-
-    .nav-card-label {
-        font-size: 16px;
-    }
-
-    .nav-card-links {
-        gap: 6px;
-    }
-
-    .nav-card-link {
-        font-size: 11px;
-        padding: 2px 4px;
-    }
+    .platform-name { font-size: 1.1rem; letter-spacing: 1px; }
+    .logo { height: 26px; }
+    .nav-card-top { height: 60px; }
+    .card-nav { height: 60px; }
+    .card-nav-content { top: 60px; padding: 0.5rem; gap: 5px; }
+    .nav-card { min-height: 65px; padding: 10px 12px; }
+    .nav-card-label { font-size: 16px; }
+    .nav-card-links { gap: 6px; }
+    .nav-card-link { font-size: 11px; padding: 2px 4px; }
 }
 
-/* Extra small screens */
-@media (max-width: 360px) {
-    .platform-name {
-        font-size: 1rem;
-    }
-
-    .logo {
-        height: 24px;
-    }
-
-    .logo-container {
-        gap: 0.3rem;
-    }
-
-    .nav-card-label {
-        font-size: 15px;
-    }
-
-    .nav-card-link {
-        font-size: 11px;
-        padding: 2px 4px;
-    }
-}
-
-/* Smooth animations */
+/* --- Animation and Scrollbar --- */
 .card-nav,
 .card-nav-content,
 .nav-card,
@@ -460,21 +301,7 @@
     transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-/* Scrollbar styling */
-.card-nav-content::-webkit-scrollbar {
-    width: 4px;
-}
-
-.card-nav-content::-webkit-scrollbar-track {
-    background: rgba(0, 0, 0, 0.1);
-    border-radius: 2px;
-}
-
-.card-nav-content::-webkit-scrollbar-thumb {
-    background: rgba(255, 255, 255, 0.3); /* Lighter scrollbar for dark backgrounds */
-    border-radius: 2px;
-}
-
-.card-nav-content::-webkit-scrollbar-thumb:hover {
-    background: rgba(255, 255, 255, 0.5);
-}
+.card-nav-content::-webkit-scrollbar { width: 4px; }
+.card-nav-content::-webkit-scrollbar-track { background: rgba(255, 255, 255, 0.1); border-radius: 2px; }
+.card-nav-content::-webkit-scrollbar-thumb { background: rgba(255, 255, 255, 0.3); border-radius: 2px; }
+.card-nav-content::-webkit-scrollbar-thumb:hover { background: rgba(255, 255, 255, 0.5); }

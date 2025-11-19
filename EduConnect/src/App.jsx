@@ -86,11 +86,11 @@ function App() {
     return (
         <div className="App">
             <CardNav
-                // Using a white logo for the dark background
-                logo="/image_59bd60.png"
+                // Logo path set to the requested value
+                logo="/educonnect_logo.png"
                 logoAlt="EduConnect"
                 items={navItems}
-                // SETTING THE MAIN NAV BAR TO DARK BLUE
+                // Setting the main nav bar to dark blue
                 baseColor="#1e293b"
                 buttonBgColor="#66a1be"
                 buttonTextColor="#ffffff"

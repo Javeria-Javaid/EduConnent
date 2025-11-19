@@ -3,6 +3,9 @@ import DecryptedText from '../DecryptedText/DecryptedText';
 import './Hero.css';
 import educonnectLogo from '../../assets/educonnectLogo/educonnect_logo.png';
 
+// Lucide-react icons
+import { School, Briefcase, Globe, Link2, Users } from 'lucide-react';
+
 const Hero = ({
                   title,
                   subtitle,
@@ -39,13 +42,12 @@ const Hero = ({
         }
     };
 
-    // Placeholder data for 5 key features (5 circles total)
     const features = [
-        { name: "Schools & Admissions", icon: "🏫" }, // 0
-        { name: "Jobs & Careers", icon: "💼" },       // 1
-        { name: "Educational Services", icon: "🌐" }, // 2
-        { name: "Unified Platform", icon: "🔗" },    // 3
-        { name: "Parent & Teacher Connect", icon: "👪" } // 4
+        { name: "Schools & Admissions", icon: <School size={32} />, color: "#f0f9ff" },
+        { name: "Jobs & Careers", icon: <Briefcase size={32} />, color: "#fef7cd" },
+        { name: "Educational Services", icon: <Globe size={32} />, color: "#f3e8ff" },
+        { name: "Unified Platform", icon: <Link2 size={32} />, color: "#dcfce7" },
+        { name: "Parent & Teacher Connect", icon: <Users size={32} />, color: "#ffe4e6" }
     ];
 
     return (
@@ -57,7 +59,7 @@ const Hero = ({
             <div className="hero-container">
                 <div className="hero-content-grid">
 
-                    {/* Left Column: Text Content */}
+                    {/* Left Column */}
                     <div className="hero-text-content">
                         <h1 className="hero-title">
                             <DecryptedText
@@ -89,7 +91,6 @@ const Hero = ({
                                     {primaryButton.text}
                                 </button>
                             )}
-
                             {secondaryButton && (
                                 <button className="btn secondary" onClick={secondaryButton.onClick}>
                                     {secondaryButton.text}
@@ -98,23 +99,25 @@ const Hero = ({
                         </div>
                     </div>
 
-                    {/* Right Column: Logo and Features */}
+                    {/* Right Column: Logo + Orbiting Features */}
                     <div className="hero-visual-content">
                         <div className="logo-feature-wrapper">
                             <img src={educonnectLogo} alt="EduConnect Portal Logo" className="hero-logo" />
 
-                            {/* Feature Circles: Text removed */}
                             {features.map((feature, index) => (
                                 <div
                                     key={index}
                                     className="feature-circle"
+                                    style={{ '--i': index, backgroundColor: feature.color }}
+                                    title={feature.name}
                                 >
-                                    <span className="feature-icon">{feature.icon}</span>
-                                    {/* Removed: <span className="feature-name">{feature.name}</span> */}
+                                    <div className="feature-icon-rotate">{feature.icon}</div>
                                 </div>
                             ))}
+
                         </div>
                     </div>
+
                 </div>
             </div>
         </section>

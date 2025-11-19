@@ -21,6 +21,8 @@ const CardNav = ({
     const cardsRef = useRef([]);
     const tlRef = useRef(null);
 
+    // Calculates the required height for the expanded navigation bar,
+    // crucial for handling auto-calculated scroll height on mobile.
     const calculateHeight = () => {
         const navEl = navRef.current;
         if (!navEl) return 300;
@@ -29,33 +31,30 @@ const CardNav = ({
         if (isMobile) {
             const contentEl = navEl.querySelector('.card-nav-content');
             if (contentEl) {
-                const wasVisible = contentEl.style.visibility;
-                const wasPointerEvents = contentEl.style.pointerEvents;
+                // Save original styles to revert after measurement
                 const wasPosition = contentEl.style.position;
                 const wasHeight = contentEl.style.height;
 
-                contentEl.style.visibility = 'visible';
-                contentEl.style.pointerEvents = 'auto';
+                // Temporarily make content static to measure scroll height
                 contentEl.style.position = 'static';
                 contentEl.style.height = 'auto';
-
-                contentEl.offsetHeight;
 
                 const topBar = 70;
                 const padding = 20;
                 const contentHeight = contentEl.scrollHeight;
 
-                contentEl.style.visibility = wasVisible;
-                contentEl.style.pointerEvents = wasPointerEvents;
+                // Revert styles
                 contentEl.style.position = wasPosition;
                 contentEl.style.height = wasHeight;
 
                 return topBar + contentHeight + padding;
             }
         }
+        // Desktop height (fixed)
         return 300;
     };
 
+    // Creates the GSAP timeline for the expansion/collapse animation
     const createTimeline = () => {
         const navEl = navRef.current;
         if (!navEl) return null;
@@ -65,12 +64,14 @@ const CardNav = ({
 
         const tl = gsap.timeline({ paused: true });
 
+        // Step 1: Animate height expansion
         tl.to(navEl, {
             height: calculateHeight,
             duration: 0.4,
             ease
         });
 
+        // Step 2: Animate cards fading up and in
         tl.to(cardsRef.current, {
             y: 0,
             opacity: 1,
@@ -92,21 +93,25 @@ const CardNav = ({
         };
     }, [ease, items]);
 
+    // Handles resizing while the menu is open to recalculate the height
     useLayoutEffect(() => {
         const handleResize = () => {
             if (!tlRef.current) return;
 
             if (isExpanded) {
                 const newHeight = calculateHeight();
+                // Directly set the height if expanded to handle fluid resizing
                 gsap.set(navRef.current, { height: newHeight });
 
+                // Recreate the timeline to update its height logic
                 tlRef.current.kill();
                 const newTl = createTimeline();
                 if (newTl) {
-                    newTl.progress(1);
+                    newTl.progress(1); // Jump to the end state
                     tlRef.current = newTl;
                 }
             } else {
+                // If collapsed, just ensure the timeline is recreated for the next open
                 tlRef.current.kill();
                 const newTl = createTimeline();
                 if (newTl) {
@@ -128,6 +133,7 @@ const CardNav = ({
             tl.play(0);
         } else {
             setIsHamburgerOpen(false);
+            // Set callback to flip isExpanded *after* the animation finishes reversing
             tl.eventCallback('onReverseComplete', () => setIsExpanded(false));
             tl.reverse();
         }
@@ -139,7 +145,11 @@ const CardNav = ({
 
     return (
         <div className={`card-nav-container ${className}`}>
-            <nav ref={navRef} className={`card-nav ${isExpanded ? 'open' : ''}`} style={{ backgroundColor: baseColor }}>
+            <nav
+                ref={navRef}
+                className={`card-nav ${isExpanded ? 'open' : ''}`}
+                style={{ backgroundColor: baseColor }}
+            >
                 <div className="card-nav-top">
                     <div
                         className={`hamburger-menu ${isHamburgerOpen ? 'open' : ''}`}
