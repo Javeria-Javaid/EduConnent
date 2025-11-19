@@ -1,27 +1,57 @@
 import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom'; // <--- ADDED: For navigation
 import './AuthPage.css';
-import { FaGoogle, FaGithub, FaSignInAlt, FaUserPlus } from 'react-icons/fa'; // Added icons for buttons
+import { FaGoogle, FaGithub, FaSignInAlt, FaUserPlus } from 'react-icons/fa';
+
+// --- MOCK CREDENTIALS FOR DEVELOPMENT ---
+const ADMIN_EMAIL = 'admin@educonnect.com';
+const ADMIN_PASSWORD = 'password123';
+// ----------------------------------------
 
 const AuthPage = () => {
+    const navigate = useNavigate(); // <--- ADDED: Initialize navigate hook
+
     // State to toggle between Login (true) and Sign Up (false) forms
-    const [isLoginView, setIsLoginView] = useState(false);
+    const [isLoginView, setIsLoginView] = useState(true); // Start on Login view
+
+    // State for Login Form Inputs
+    const [email, setEmail] = useState('');
+    const [password, setPassword] = useState('');
+    const [loginError, setLoginError] = useState(''); // State for error messages
 
     // State for the multi-step feature (kept for the Sign Up side)
-    const [currentStep, setCurrentStep] = useState(1);
+    const [currentStep] = useState(1); // Removed setter since we are not changing steps yet
 
     // Function to switch view
     const toggleView = (isLogin) => {
         setIsLoginView(isLogin);
+        setLoginError(''); // Clear error when switching views
     };
 
-    // --- CONTENT RENDER LOGIC ---
+    // --- LOGIN SUBMISSION HANDLER ---
+    const handleLoginSubmit = (e) => {
+        e.preventDefault();
+        setLoginError(''); // Clear previous errors
+
+        // Check against mock credentials
+        if (email === ADMIN_EMAIL && password === ADMIN_PASSWORD) {
+            console.log("Login Successful! Redirecting to Dashboard...");
+            // Navigate to the dashboard route defined in App.jsx
+            navigate('/admin/dashboard');
+        } else {
+            // Display an error message
+            setLoginError('Invalid email or password. Use admin@educonnect.com / password123');
+        }
+    };
+    // --- END LOGIN SUBMISSION HANDLER ---
+
 
     // 1. Right Panel Content (Form)
     const renderRightPanelContent = () => {
         if (isLoginView) {
             // --- LOGIN FORM ---
             return (
-                <form className="login-form" onSubmit={(e) => e.preventDefault()}>
+                <form className="login-form" onSubmit={handleLoginSubmit}> {/* <--- USE HANDLER */}
                     <h2>Welcome Back!</h2>
                     <p className="form-subtitle">Log in to continue your journey with EduConnect.</p>
 
@@ -36,8 +66,23 @@ const AuthPage = () => {
 
                     <div className="or-divider">Or</div>
 
-                    <input type="email" placeholder="Email" required />
-                    <input type="password" placeholder="Password" required />
+                    <input
+                        type="email"
+                        placeholder="Email"
+                        required
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)} // <--- CAPTURE EMAIL
+                    />
+                    <input
+                        type="password"
+                        placeholder="Password"
+                        required
+                        value={password}
+                        onChange={(e) => setPassword(e.target.value)} // <--- CAPTURE PASSWORD
+                    />
+
+                    {/* Display Error Message */}
+                    {loginError && <p className="login-error-message">{loginError}</p>}
 
                     <div className="forgot-password-link">
                         <a href="#" onClick={(e) => e.preventDefault()}>Forgot Password?</a>
@@ -49,7 +94,7 @@ const AuthPage = () => {
 
                     <p className="signup-link-text">
                         Don't have an account?
-                        <a href="#" onClick={(e) => toggleView(false)}> Sign Up</a>
+                        <a href="#" onClick={() => toggleView(false)}> Sign Up</a>
                     </p>
                 </form>
             );
@@ -85,7 +130,7 @@ const AuthPage = () => {
 
                     <p className="login-link-text">
                         Already have an account?
-                        <a href="#" onClick={(e) => toggleView(true)}> Log In</a>
+                        <a href="#" onClick={() => toggleView(true)}> Log In</a>
                     </p>
                 </form>
             );
