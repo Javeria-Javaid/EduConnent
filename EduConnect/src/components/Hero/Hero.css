@@ -104,7 +104,7 @@
     color: #fff; /* White text for contrast */
 }
 .hero-buttons .btn.secondary:hover {
-    background: #243761; /* Slightly brighter on hover */
+    background: #0f172a; /* Slightly brighter on hover */
     transform: translateY(-4px) scale(1.03);
     color: #fff;
 }

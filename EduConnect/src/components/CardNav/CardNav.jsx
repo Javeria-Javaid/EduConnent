@@ -1,6 +1,7 @@
 import { useLayoutEffect, useRef, useState } from 'react';
 import { gsap } from 'gsap';
 import { GoArrowUpRight } from 'react-icons/go';
+import { useNavigate } from 'react-router-dom'; // <--- 1. NEW IMPORT
 import './CardNav.css';
 
 const CardNav = ({
@@ -20,6 +21,7 @@ const CardNav = ({
     const navRef = useRef(null);
     const cardsRef = useRef([]);
     const tlRef = useRef(null);
+    const navigate = useNavigate(); // <--- 2. INITIALIZE HOOK
 
     // Calculates the required height for the expanded navigation bar,
     // crucial for handling auto-calculated scroll height on mobile.
@@ -172,6 +174,7 @@ const CardNav = ({
                         type="button"
                         className="card-nav-cta-button"
                         style={{ backgroundColor: buttonBgColor, color: buttonTextColor }}
+                        onClick={() => navigate('/login')} // <--- 3. CTA BUTTON HANDLER
                     >
                         Get Started
                     </button>
@@ -196,6 +199,7 @@ const CardNav = ({
                                         className="nav-card-link"
                                         href={lnk.href}
                                         aria-label={lnk.ariaLabel}
+                                        onClick={lnk.onClick} // <--- 4. DROPDOWN LINK HANDLER
                                     >
                                         <GoArrowUpRight className="nav-card-link-icon" aria-hidden="true" />
                                         {lnk.label}

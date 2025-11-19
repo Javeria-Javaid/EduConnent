@@ -27,7 +27,10 @@ const LandingPage = () => {
             textColor: "#0369a1",
             links: [
                 { label: "Welcome", href: "#home", ariaLabel: "Welcome to EduConnect" },
-                { label: "Get Started", href: "#get-started", ariaLabel: "Get started with EduConnect" },
+                { label: "Get Started",
+                    href: "/login",
+                    onClick: (e) => { e.preventDefault(); navigate('/login'); }, // <--- This is the key logic
+                    ariaLabel: "Get started with EduConnect"},
                 { label: "Platform Tour", href: "#tour", ariaLabel: "Take a platform tour" }
             ]
         },
@@ -84,7 +87,7 @@ const LandingPage = () => {
             onClick: () => navigate('/login')
         },
         secondaryButton: {
-            text: "Explore Features",
+            text: "Platform tour",
             onClick: () => {
                 // Optional: smooth scroll to features
                 document.getElementById('features')?.scrollIntoView({ behavior: 'smooth' });
