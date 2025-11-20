@@ -1,5 +1,5 @@
 import { School, Store, Users, TrendingUp, ArrowUp, ArrowDown } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 export default function Dashboard() {

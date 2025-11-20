@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
+import { Input } from './ui/input.jsx';
+import { Button } from './ui/button.jsx';
+import { Badge } from './ui/badge.jsx';
 import { Search, Filter, MoreVertical, Flag } from 'lucide-react';
 import {
   Table,
@@ -11,21 +11,21 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './ui/table';
+} from './ui/table.jsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from './ui/select.jsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
   DropdownMenuItem,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
-import { Avatar, AvatarFallback } from './ui/avatar';
+} from './ui/dropdown-menu.jsx';
+import { Avatar, AvatarFallback } from './ui/avatar.jsx';
 import { toast } from 'sonner';
 
 const users = [

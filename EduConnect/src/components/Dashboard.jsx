@@ -1,6 +1,6 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
 import { School, Store, Users, Briefcase, TrendingUp, AlertCircle } from 'lucide-react';
-import { Badge } from './ui/badge';
+import { Badge } from './ui/badge.jsx';
 import { LineChart, Line, BarChart, Bar, PieChart, Pie, Cell, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 
 const kpiData = [

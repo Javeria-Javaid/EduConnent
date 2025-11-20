@@ -1,6 +1,6 @@
 import { Link, useLocation } from 'react-router-dom';
 import { LayoutDashboard, School, Store, Users, BarChart3, MessageSquare, Settings, ChevronLeft, ChevronRight } from 'lucide-react';
-import { cn } from './ui/utils';
+import { cn } from './ui/utils.js';
 
 const navigation = [
   { name: 'Dashboard', href: '/dashboard', icon: LayoutDashboard },

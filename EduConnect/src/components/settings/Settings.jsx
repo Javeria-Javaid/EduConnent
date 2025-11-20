@@ -1,18 +1,18 @@
 import { useState } from 'react';
 import { Save, Shield, Bell, Key, Database, Mail, Globe } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
-import { Input } from '../ui/input';
-import { Label } from '../ui/label';
-import { Switch } from '../ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';
+import { Button } from '../ui/button.jsx';
+import { Input } from '../ui/input.jsx';
+import { Label } from '../ui/label.jsx';
+import { Switch } from '../ui/switch.jsx';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from '../ui/tabs.jsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '../ui/select.jsx';
 
 export default function Settings() {
   const [emailNotifications, setEmailNotifications] = useState(true);

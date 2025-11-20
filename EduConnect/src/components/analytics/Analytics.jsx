@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { Download, Calendar, TrendingUp, Users, School, Store } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';
+import { Button } from '../ui/button.jsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '../ui/select.jsx';
 import {
   LineChart,
   Line,

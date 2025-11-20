@@ -1,12 +1,12 @@
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
-import { Textarea } from './ui/textarea';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
+import { Input } from './ui/input.jsx';
+import { Button } from './ui/button.jsx';
+import { Badge } from './ui/badge.jsx';
+import { Textarea } from './ui/textarea.jsx';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs.jsx';
 import { MessageSquare, Send, Clock, CheckCircle, AlertCircle, Plus } from 'lucide-react';
-import { Avatar, AvatarFallback } from './ui/avatar';
+import { Avatar, AvatarFallback } from './ui/avatar.jsx';
 import {
   Dialog,
   DialogContent,
@@ -14,8 +14,8 @@ import {
   DialogHeader,
   DialogTitle,
   DialogTrigger,
-} from './ui/dialog';
-import { Label } from './ui/label';
+} from './ui/dialog.jsx';
+import { Label } from './ui/label.jsx';
 import { toast } from 'sonner';
 
 const tickets = {

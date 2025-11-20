@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { Search, Plus, Eye, Edit, Trash2, Shield, UserCheck } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import { Input } from '../ui/input';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';
+import { Button } from '../ui/button.jsx';
+import { Badge } from '../ui/badge.jsx';
+import { Input } from '../ui/input.jsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '../ui/select.jsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '../ui/dialog';
-import { Label } from '../ui/label';
+} from '../ui/dialog.jsx';
+import { Label } from '../ui/label.jsx';
 
 export default function UserManagement() {
   const [searchQuery, setSearchQuery] = useState('');

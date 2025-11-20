@@ -1,24 +1,24 @@
 import { useState } from 'react';
 import { Search, Filter, Send, MessageSquare, AlertCircle, CheckCircle, Clock } from 'lucide-react';
-import { Card, CardContent, CardHeader, CardTitle } from '../ui/card';
-import { Button } from '../ui/button';
-import { Badge } from '../ui/badge';
-import { Input } from '../ui/input';
-import { Textarea } from '../ui/textarea';
+import { Card, CardContent, CardHeader, CardTitle } from '../ui/card.jsx';
+import { Button } from '../ui/button.jsx';
+import { Badge } from '../ui/badge.jsx';
+import { Input } from '../ui/input.jsx';
+import { Textarea } from '../ui/textarea.jsx';
 import {
   Select,
   SelectContent,
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from '../ui/select';
+} from '../ui/select.jsx';
 import {
   Dialog,
   DialogContent,
   DialogDescription,
   DialogHeader,
   DialogTitle,
-} from '../ui/dialog';
+} from '../ui/dialog.jsx';
 
 export default function CommunicationCenter() {
   const [searchQuery, setSearchQuery] = useState('');

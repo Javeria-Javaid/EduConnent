@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Badge } from './ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
+import { Input } from './ui/input.jsx';
+import { Button } from './ui/button.jsx';
+import { Badge } from './ui/badge.jsx';
 import { Search, Store, Package, Star } from 'lucide-react';
 import {
   Select,
@@ -10,8 +10,9 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from './ui/select.jsx';
 import { toast } from 'sonner';
+
 
 const vendors = [
   { id: 1, name: 'ABC Uniforms', category: 'Uniform', products: 145, schools: 32, rating: 4.8, status: 'Verified', revenue: 125000 },

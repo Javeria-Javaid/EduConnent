@@ -1,7 +1,7 @@
 import { Bell, Search } from 'lucide-react';
-import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar';
-import { Input } from './ui/input';
-import { Badge } from './ui/badge';
+import { Avatar, AvatarFallback, AvatarImage } from './ui/avatar.jsx';
+import { Input } from './ui/input.jsx';
+import { Badge } from './ui/badge.jsx';
 import {
   DropdownMenu,
   DropdownMenuContent,
@@ -9,7 +9,7 @@ import {
   DropdownMenuLabel,
   DropdownMenuSeparator,
   DropdownMenuTrigger,
-} from './ui/dropdown-menu';
+} from './ui/dropdown-menu.jsx';
 
 export function Header() {
   return (

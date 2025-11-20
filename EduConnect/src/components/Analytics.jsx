@@ -1,5 +1,5 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Button } from './ui/button';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
+import { Button } from './ui/button.jsx';
 import { Download, Calendar } from 'lucide-react';
 import { LineChart, Line, BarChart, Bar, AreaChart, Area, XAxis, YAxis, CartesianGrid, Tooltip, Legend, ResponsiveContainer } from 'recharts';
 import {
@@ -8,7 +8,7 @@ import {
   SelectItem,
   SelectTrigger,
   SelectValue,
-} from './ui/select';
+} from './ui/select.jsx';
 import { toast } from 'sonner';
 
 const admissionsWeekly = [

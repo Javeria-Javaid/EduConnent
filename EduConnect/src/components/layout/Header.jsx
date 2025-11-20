@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { Search, Bell, Settings } from 'lucide-react';
-import { Badge } from '../ui/badge';
+import { Badge } from '../ui/badge.jsx';
 
 export default function Header() {
   const [searchQuery, setSearchQuery] = useState('');

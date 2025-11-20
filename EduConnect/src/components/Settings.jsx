@@ -1,10 +1,10 @@
-import { Card, CardContent, CardHeader, CardTitle } from './ui/card';
-import { Input } from './ui/input';
-import { Button } from './ui/button';
-import { Label } from './ui/label';
-import { Switch } from './ui/switch';
-import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs';
-import { Badge } from './ui/badge';
+import { Card, CardContent, CardHeader, CardTitle } from './ui/card.jsx';
+import { Input } from './ui/input.jsx';
+import { Button } from './ui/button.jsx';
+import { Label } from './ui/label.jsx';
+import { Switch } from './ui/switch.jsx';
+import { Tabs, TabsContent, TabsList, TabsTrigger } from './ui/tabs.jsx';
+import { Badge } from './ui/badge.jsx';
 import { User, Shield, Key, Database, Bell } from 'lucide-react';
 import {
   Table,
@@ -13,8 +13,8 @@ import {
   TableHead,
   TableHeader,
   TableRow,
-} from './ui/table';
-import { Checkbox } from './ui/checkbox';
+} from './ui/table.jsx';
+import { Checkbox } from './ui/checkbox.jsx';
 import { toast } from 'sonner';
 
 const adminRoles = [
